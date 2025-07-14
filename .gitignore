@@ -39,3 +39,10 @@ luac.out
 *.x86_64
 *.hex
 
+# Os
+*.DS_Store
+
+# Tools
+fish/.config/fish/conf.d
+fish/.config/fish/fish_variables
+fish/.config/fish/functions/fzf_key_bindings.fish

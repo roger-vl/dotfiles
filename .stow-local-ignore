@@ -1,0 +1,8 @@
+.git
+.DS_Store
+.gitconfig
+.ssh/config
+.wget-hsts
+fish/.config/fish/conf.d
+fish/.config/fish/fish_variables
+fish/.config/fish/functions/fzf_key_bindings.fish
