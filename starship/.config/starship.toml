@@ -4,10 +4,15 @@ add_newline = true
 
 command_timeout = 2000
 
+# $os\
+
 format = """
-$os\
 $shell\
 $directory\
+$golang\
+$nodejs\
+$php\
+$java\
 $git_branch\
 $git_commit\
 $git_status\
@@ -15,10 +20,6 @@ $git_metrics\
 $git_state\
 $c\
 $rust\
-$golang\
-$nodejs\
-$php\
-$java\
 $kotlin\
 $haskell\
 $python\
@@ -151,23 +152,23 @@ format = '[ $user ]($style)'
 style = "fg:color_directory"
 read_only_style = "fg:color_directory"
 repo_root_style = "bold fg:color_directory"
-format = "[ $path ]($style)"
-read_only = " "
-home_symbol = "~"
-truncation_symbol = "…/"
+format = "[$path]($style)"
+read_only = ""
+home_symbol = " "
+truncation_symbol = "…/"
 truncation_length = 0
 truncate_to_repo = true
 fish_style_pwd_dir_length = 0
 use_logical_path = true
 
 [git_branch]
-symbol = ""
+symbol = ""
 style = "fg:color_git"
-format = '( [$symbol $branch]($style) )'
+format = '([ $symbol $branch]($style) )'
 only_attached = true
 ignore_branches = []
 truncation_length = 25
-truncation_symbol = "..."
+truncation_symbol = ".."
 always_show_remote = false
 disabled = false
 
@@ -232,9 +233,10 @@ style = "fg:color_env"
 format = '( [$symbol( $version)]($style) )'
 
 [golang]
-symbol = "󰟓"
+symbol = ""
 style = "fg:color_env"
-format = '( [$symbol( $version)]($style) )'
+# format = '( [$symbol()]($style))'
+format = '([$symbol( $version)]($style))'
 
 [php]
 symbol = ""
@@ -281,9 +283,10 @@ disabled = false
 
 [shell]
 disabled = false
-format = '[  $indicator ]($style)'
+# format = '[$indicator  ]($style)'
+format = '[ 󰈺 ]($style)'
 bash_indicator = "bash"
-fish_indicator = "fish"
+fish_indicator = "fsh"
 zsh_indicator = "zsh"
 powershell_indicator = "powershell"
 pwsh_indicator = "pwsh"
@@ -294,7 +297,7 @@ xonsh_indicator = "xonsh"
 cmd_indicator = "cmd"
 nu_indicator = "nu"
 unknown_indicator = ""
-style = "fg:color_shell"
+style = "fg:color_docker"
 
 [container]
 style = "fg:color_container"
@@ -402,7 +405,7 @@ command = """
 # Set env variables if you want to use layout aliases (in uppercase)
 #     export STARSHIP_COCKPIT_KEYBOARD_LAYOUT_ABC=ENG
 #     export STARSHIP_COCKPIT_KEYBOARD_LAYOUT_UKRAINIAN=UKR
-# 
+#
 # Implementations:
 #     macOS
 
