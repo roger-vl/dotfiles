@@ -2,8 +2,10 @@ font-family = "MesloLGS NF"
 font-size = 18
 theme = gruvbox-material
 # elemental
-background-opacity = 0.96
-background-blur = 13
+shell-integration = fish
+background-opacity = 0.93
+background-blur = 5
 macos-titlebar-style = hidden
 macos-option-as-alt = true
 macos-window-shadow = true
+window-padding-balance = true

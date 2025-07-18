@@ -8,6 +8,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 ## sources
 source ~/.config/local/paths.fish
 
+## paths
+set -gx PATH $PATH ~/.local/share/bob/nvim-bin
+
 ## sets
 set -g fish_key_bindings fish_vi_key_bindings
 set fish_greeting ""
