@@ -23,6 +23,15 @@ return {
     },
     config = function()
       require("codecompanion").setup({
+        adapters = {
+          gemini = function()
+            return require("codecompanion.adapters").extend("gemini", {
+              env = {
+                api_key = "OW_GEMINI_KEY",
+              },
+            })
+          end,
+        },
         display = {
           chat = {
             show_settings = false,
@@ -37,7 +46,6 @@ return {
               make_slash_commands = true, -- Add prompts as /slash commands
             },
           },
-
           history = {
             enabled = true,
             opts = {

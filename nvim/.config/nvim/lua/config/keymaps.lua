@@ -204,3 +204,8 @@ set(
   { desc = "CodeCompanionChat Toggle", remap = true, silent = true }
 )
 set("v", "<C-S-M-i>", ": CodeCompanionChat ", { desc = "CodeCompanionChat Selected", remap = true, silent = false })
+
+-- lua execute
+set("n", "<leader>ax", "<cmd>source %<CR>", { desc = "Source current buffer", remap = true, silent = true })
+set("n", "<leader>ar", ":.lua<CR>", { desc = "Execute lua code over cursor", remap = true, silent = true })
+set("v", "<leader>ar", ":lua<CR>", { desc = "Execute lua code selected", remap = true, silent = true })
