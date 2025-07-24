@@ -1,35 +1,42 @@
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system { 'git', 'clone', '--filter=blob:none', 'https://github.com/folke/lazy.nvim.git', '--branch=stable', lazypath }
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",
+    lazypath,
+  })
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-require('lazy').setup {
+require("lazy").setup({
   spec = {
     {
-      'LazyVim/LazyVim',
-      import = 'lazyvim.plugins',
+      "LazyVim/LazyVim",
+      import = "lazyvim.plugins",
       opts = {
-        colorscheme = 'catppuccin',
+        colorscheme = "catppuccin",
         news = {
           lazyvim = true,
           neovim = true,
         },
       },
     },
-    { import = 'lazyvim.plugins.extras.test.core' },
-    { import = 'lazyvim.plugins.extras.dap.core' },
-    { import = 'lazyvim.plugins.extras.lsp.none-ls' },
-    { import = 'lazyvim.plugins.extras.util.rest' },
-    { import = 'lazyvim.plugins.extras.lang.go' },
-    { import = 'lazyvim.plugins.extras.lang.python' },
-    { import = 'lazyvim.plugins.extras.lang.clangd' },
-    { import = 'lazyvim.plugins.extras.lang.cmake' },
-    { import = 'lazyvim.plugins.extras.lang.markdown' },
-    { import = 'lazyvim.plugins.extras.lang.json' },
-    { import = 'lazyvim.plugins.extras.lang.yaml' },
+    { import = "lazyvim.plugins.extras.test.core" },
+    { import = "lazyvim.plugins.extras.dap.core" },
+    { import = "lazyvim.plugins.extras.lsp.none-ls" },
+    { import = "lazyvim.plugins.extras.util.rest" },
+    { import = "lazyvim.plugins.extras.lang.go" },
+    { import = "lazyvim.plugins.extras.lang.python" },
+    -- { import = "lazyvim.plugins.extras.lang.clangd" },
+    -- { import = "lazyvim.plugins.extras.lang.cmake" },
+    { import = "lazyvim.plugins.extras.lang.markdown" },
+    { import = "lazyvim.plugins.extras.lang.json" },
+    { import = "lazyvim.plugins.extras.lang.yaml" },
     -- last
-    { import = 'plugins' },
+    { import = "plugins" },
   },
   defaults = {
     lazy = false,
@@ -42,14 +49,14 @@ require('lazy').setup {
     },
     rtp = {
       disabled_plugins = {
-        'gzip',
-        'matchit',
-        'matchparen',
-        'netrwPlugin',
-        'tarPlugin',
-        'tohtml',
-        'tutor',
-        'zipPlugin',
+        "gzip",
+        "matchit",
+        "matchparen",
+        "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
       },
     },
   },
@@ -57,4 +64,4 @@ require('lazy').setup {
     backdrop = 100,
   },
   debug = false,
-}
+})

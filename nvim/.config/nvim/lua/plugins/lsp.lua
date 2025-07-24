@@ -1,8 +1,8 @@
 return {
-  { 'nvim-treesitter/playground', enabled = false, cmd = 'TSPlaygroundToggle' },
+  { "nvim-treesitter/playground", enabled = false, cmd = "TSPlaygroundToggle" },
 
   {
-    'neovim/nvim-lspconfig',
+    "neovim/nvim-lspconfig",
     opts = {
       -- inlay_hints = {
       --   enabled = true,
@@ -56,13 +56,13 @@ return {
     },
   },
   {
-    'mfussenegger/nvim-lint',
+    "mfussenegger/nvim-lint",
     enabled = true,
     opts = {
       linters_by_ft = {
         markdown = {
-          ['markdownlint-cli2'] = {
-            args = { '--disable', 'MD013', '--' },
+          ["markdownlint-cli2"] = {
+            args = { "--disable", "MD013", "--" },
           },
         },
       },
@@ -70,46 +70,45 @@ return {
   },
 
   {
-    'williamboman/mason.nvim',
+    "williamboman/mason.nvim",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
-        'stylua',
-        'selene',
-        'shellcheck',
-        'shfmt',
-        'json-lsp',
-        'codespell',
+        "stylua",
+        "selene",
+        "shellcheck",
+        "shfmt",
+        "json-lsp",
+        "codespell",
       })
     end,
   },
 
   {
-    'nvim-treesitter/nvim-treesitter',
+    "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
-        'http',
-        'graphql',
-        'java',
-        'go',
-        'regex',
-        'jsonc',
-        'json',
-        'xml',
-        'sql',
-        'mermaid',
-        'hurl',
-        'latex',
+        "http",
+        "graphql",
+        "go",
+        "regex",
+        "jsonc",
+        "json",
+        "xml",
+        "sql",
+        "mermaid",
+        "hurl",
+        "latex",
       })
     end,
   },
 
   {
-    'nvimdev/lspsaga.nvim',
+    "nvimdev/lspsaga.nvim",
     lazy = true,
-    event = 'LspAttach',
-    ft = { 'cpp', 'lua', 'http', 'go' },
+    event = "LspAttach",
+    ft = { "cpp", "lua", "http", "go" },
     config = function()
-      require('lspsaga').setup {
+      require("lspsaga").setup({
         lightbulb = {
           enable = false,
         },
@@ -118,40 +117,40 @@ return {
         },
         definition = {
           keys = {
-            quit = '<esc>',
-            vsplit = '<C-.>',
-            split = '<C-,>',
+            quit = "<esc>",
+            vsplit = "<C-.>",
+            split = "<C-,>",
           },
         },
         finder = {
-          default = 'def+imp+ref',
+          default = "def+imp+ref",
           max_height = 0.6,
           left_width = 0.4,
           right_width = 0.6,
-          layout = 'normal',
+          layout = "normal",
           keys = {
-            quit = '<esc>',
-            toggle_or_open = '<CR>',
-            vsplit = '<C-.>',
-            split = '<C-,>',
+            quit = "<esc>",
+            toggle_or_open = "<CR>",
+            vsplit = "<C-.>",
+            split = "<C-,>",
           },
         },
-      }
+      })
     end,
     -- ['ref'] = 'textDocument/references',
     dependencies = {
-      'nvim-treesitter/nvim-treesitter', -- optional
-      'nvim-tree/nvim-web-devicons', -- optional
+      "nvim-treesitter/nvim-treesitter", -- optional
+      "nvim-tree/nvim-web-devicons", -- optional
     },
   },
 
   {
-    'folke/trouble.nvim',
-    cmd = 'Trouble',
+    "folke/trouble.nvim",
+    cmd = "Trouble",
     opts = {
       modes = {
         mydiags = {
-          mode = 'diagnostics', -- inherit from diagnostics mode
+          mode = "diagnostics", -- inherit from diagnostics mode
           filter = {
             any = {
               buf = 0, -- current buffer
