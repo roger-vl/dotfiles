@@ -1,6 +1,7 @@
 return {
   {
     "rcasia/neotest-java",
+    enabled = false,
     ft = "java",
     dependencies = {
       "mfussenegger/nvim-jdtls",
@@ -55,7 +56,7 @@ return {
       "nvim-treesitter/nvim-treesitter",
       { "fredrikaverpil/neotest-golang", version = "*" }, -- Installation
     },
-    ft = { "go", "java" },
+    ft = { "go" },
     opts = {
       -- See all config options with :h neotest.Config
       discovery = {
@@ -82,9 +83,9 @@ return {
           warn_test_name_dupes = false,
           testify_enabled = true,
         },
-        ["neotest-java"] = {
-          -- config here
-        },
+        -- ["neotest-java"] = {
+        --   -- config here
+        -- },
       },
     },
   },
