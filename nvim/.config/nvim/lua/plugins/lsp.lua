@@ -64,6 +64,7 @@ return {
           ["markdownlint-cli2"] = {
             args = { "--disable", "MD013", "--" },
           },
+          -- "cspell",
         },
       },
     },
@@ -78,7 +79,6 @@ return {
         "shellcheck",
         "shfmt",
         "json-lsp",
-        "codespell",
       })
     end,
   },

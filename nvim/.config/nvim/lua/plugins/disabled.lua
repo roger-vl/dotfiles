@@ -5,10 +5,10 @@ return {
   -- { 'akinsho/bufferline.nvim', enabled = false },
   -- { 'mfussenegger/nvim-lint', enabled = false },
   {
-    'norcalli/nvim-colorizer.lua',
+    "norcalli/nvim-colorizer.lua",
     enabled = true,
     config = function()
-      require('colorizer').setup()
+      require("colorizer").setup()
     end,
   },
 }
