@@ -1,4 +1,4 @@
-local Path = require 'plenary.path'
+local Path = require("plenary.path")
 
 --- Given a path, return a shortened version of it.
 --- @param path string an absolute or relative path
@@ -46,7 +46,7 @@ local function shorten_path(path, opts)
   local relative = opts.relative == nil or opts.relative
   local return_table = opts.return_table or false
   if relative then
-    path = vim.fn.fnamemodify(path, ':.')
+    path = vim.fn.fnamemodify(path, ":.")
   end
   local components = vim.split(path, Path.path.sep)
   if #components == 1 then
@@ -72,14 +72,14 @@ end
 
 local function modified_suffix(buf)
   if vim.bo[buf].modified then
-    return ' [+]'
+    return " [+]"
   else
-    return ''
+    return ""
   end
 end
 
 local function get_git_diff(buf)
-  local icons = { removed = ' ', changed = ' ', added = ' ' }
+  local icons = { removed = " ", changed = " ", added = " " }
   local signs = vim.b[buf].gitsigns_status_dict
   local labels = {}
   if signs == nil then
@@ -87,27 +87,27 @@ local function get_git_diff(buf)
   end
   for name, icon in pairs(icons) do
     if tonumber(signs[name]) and signs[name] > 0 then
-      table.insert(labels, { icon .. signs[name] .. ' ', group = 'Diff' .. name })
+      table.insert(labels, { icon .. signs[name] .. " ", group = "Diff" .. name })
     end
   end
   if #labels > 0 then
-    table.insert(labels, { '┊ ' })
+    table.insert(labels, { "┊ " })
   end
   return labels
 end
 
 local function get_diagnostic_label(buf)
-  local icons = { error = ' ', warn = ' ', info = ' ', hint = '' }
+  local icons = { error = " ", warn = " ", info = " ", hint = "" }
   local label = {}
 
   for severity, icon in pairs(icons) do
     local n = #vim.diagnostic.get(buf, { severity = vim.diagnostic.severity[string.upper(severity)] })
     if n > 0 then
-      table.insert(label, { icon .. n .. ' ', group = 'DiagnosticSign' .. severity })
+      table.insert(label, { icon .. n .. " ", group = "DiagnosticSign" .. severity })
     end
   end
   if #label > 0 then
-    table.insert(label, { '┊ ' })
+    table.insert(label, { "┊ " })
   end
   return label
 end
@@ -137,46 +137,46 @@ local function shorten_path_styled(props, opts)
   local tail_style = opts.tail_style or {}
   local result = shorten_path(
     path,
-    vim.tbl_extend('force', opts, {
+    vim.tbl_extend("force", opts, {
       return_table = true,
     })
   )
 
   if props.focused then
     return {
-      { '', guifg = '#393637' },
-      vim.list_extend({ guibg = '#393637' }, get_diagnostic_label(buf)),
-      vim.list_extend({ guibg = '#393637' }, get_git_diff(buf)),
-      vim.list_extend({ guifg = '#7F7F7F', guibg = '#393637' }, { result[1], '/' }) or '',
+      { "", guifg = "#393637" },
+      { guibg = "#393637", modified_suffix(buf) },
+      vim.list_extend({ guibg = "#393637" }, get_diagnostic_label(buf)),
+      vim.list_extend({ guibg = "#393637" }, get_git_diff(buf)),
+      vim.list_extend({ guifg = "#7F7F7F", guibg = "#393637" }, { result[1], "/" }) or "",
       vim.list_extend(tail_style, { result[2] }),
-      { guibg = '#393637', modified_suffix(buf) },
-      { '', guifg = '#393637' },
+      { "", guifg = "#393637" },
     }
   end
   return {
-    { '', guifg = '#393637' },
-    vim.list_extend({ guifg = '#7F7F7F', guibg = '#393637' }, { result[1], '/' }) or '',
+    { "", guifg = "#393637" },
+    vim.list_extend({ guifg = "#7F7F7F", guibg = "#393637" }, { result[1], "/" }) or "",
     vim.list_extend(tail_style, { result[2] }),
-    { guibg = '#393637', modified_suffix(buf) },
-    { '', guifg = '#393637' },
+    { guibg = "#393637", modified_suffix(buf) },
+    { "", guifg = "#393637" },
   }
 end
 
 return {
   {
-    'b0o/incline.nvim',
-    event = 'BufReadPre',
+    "b0o/incline.nvim",
+    event = "BufReadPre",
     priority = 1200,
     config = function()
-      require('incline').setup {
+      require("incline").setup({
         window = {
           margin = {
             vertical = 0,
             horizontal = 0,
           },
           placement = {
-            horizontal = 'right',
-            vertical = 'top',
+            horizontal = "right",
+            vertical = "top",
           },
           overlap = {
             winbar = false,
@@ -193,11 +193,11 @@ return {
             short_len = 4,
             tail_count = 1,
             head_max = 2,
-            head_style = { group = 'Comment', guibg = '#393637' },
-            tail_style = { guifg = '#EBE08B', guibg = '#393637' },
+            head_style = { group = "Comment", guibg = "#393637" },
+            tail_style = { guifg = "#EBE08B", guibg = "#393637" },
           })
         end,
-      }
+      })
     end,
   },
 }
