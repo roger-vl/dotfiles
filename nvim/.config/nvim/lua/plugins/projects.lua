@@ -1,6 +1,6 @@
 return {
   {
-    "https://github.com/ahmedkhalf/project.nvim",
+    "git@github.com:ahmedkhalf/project.nvim.git",
     config = function()
       require("project_nvim").setup({
         manual_mode = false,

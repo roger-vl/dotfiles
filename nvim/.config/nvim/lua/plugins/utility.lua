@@ -44,7 +44,7 @@ return {
   -- } },
 
   {
-    "CRAG666/code_runner.nvim",
+    "git@github.com:CRAG666/code_runner.nvim.git",
     lazy = true,
     ft = { "cpp", "python" },
     config = true,
@@ -63,8 +63,8 @@ return {
   },
   {
     "vhyrro/luarocks.nvim",
+    enabled = false,
     lazy = true,
-    -- priority = 1000,
     config = true,
   },
   {

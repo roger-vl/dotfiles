@@ -38,10 +38,10 @@ vim.cmd([[
   hi! VM_Mono guibg=Orange guifg=White gui=NONE
 ]])
 --
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "markdown", "go", "txt" },
-  command = "setlocal nospell",
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = { "markdown", "go", "txt" },
+--   command = "setlocal nospell",
+-- })
 
 -- telescope file path
 vim.api.nvim_set_hl(0, "T_tail", { fg = color.palette.Parameter })

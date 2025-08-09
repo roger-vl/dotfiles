@@ -27,7 +27,7 @@ del("i", "<M-j>")
 del("i", "<M-k>")
 del("v", "<M-j>")
 del("v", "<M-k>")
-del("n", ",")
+-- del("n", ",")
 
 -- normals
 set("n", "U", "<C-r>", { desc = "Redo last change", noremap = true, silent = true })
