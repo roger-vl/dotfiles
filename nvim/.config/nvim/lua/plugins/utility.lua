@@ -30,13 +30,6 @@ return {
       require("hop").setup({})
     end,
   },
-  {
-    "mg979/vim-visual-multi",
-    init = function()
-      vim.g.VM_default_mappings = 1
-      vim.g.VM_theme = "iceblue"
-    end,
-  },
   -- { 'stevearc/conform.nvim', opts = {
   --   formatters_by_ft = {
   --     go = { 'goimports' },

@@ -42,6 +42,9 @@ luac.out
 # Os
 *.DS_Store
 
+# Files
+lazy-lock.json
+
 # Tools
 fish/.config/fish/conf.d
 fish/.config/fish/fish_variables

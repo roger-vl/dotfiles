@@ -1,8 +1,20 @@
 # arrow movement
-ctrl - h : skhd -k "left"
-ctrl - j : skhd -k "down"
-ctrl - k : skhd -k "up"
-ctrl - l : skhd -k "right"
+ctrl - h [
+  *         : skhd -k "left"
+  "ghostty" ~
+]
+ctrl - j [
+  *         : skhd -k "down"
+  "ghostty" ~
+]
+ctrl - k [
+  *         : skhd -k "up"
+  "ghostty" ~
+]
+ctrl - l [
+  *         : skhd -k "right"
+  "ghostty" ~
+]
 
 # change window focus within space
 alt - j : yabai -m window --focus south
@@ -57,3 +69,7 @@ shift + alt - a : yabai -m space --layout bsp
 # # ctrl + alt - q : brew services stop yabai
 # # ctrl + alt - s : brew services start yabai
 # # ctrl + alt - r : brew services restart yabai
+# blacklist
+# .blacklist [
+#     "ghostty"
+# ]

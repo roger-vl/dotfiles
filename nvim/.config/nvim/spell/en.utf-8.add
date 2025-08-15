@@ -653,3 +653,7 @@ rla
 mexbank
 npmexbank
 nonprod
+mysql
+Sql
+kvs
+bigquery

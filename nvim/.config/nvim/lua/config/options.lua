@@ -9,5 +9,5 @@ opt.fillchars:append("eob: ")
 vim.opt.spelllang = "en_us,es"
 vim.opt.spell = true
 vim.opt.spelloptions = "camel"
-vim.g.loaded_netrw = 0
-vim.g.loaded_netrwPlugin = 0
+-- vim.g.loaded_netrw = 0
+-- vim.g.loaded_netrwPlugin = 0

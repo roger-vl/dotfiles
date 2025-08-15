@@ -14,9 +14,9 @@ local function vec_union(...)
   local args = { ... }
   local seen = {}
 
-  for i = 1, select('#', ...) do
-    if type(args[i]) ~= 'nil' then
-      if type(args[i]) ~= 'table' and not seen[args[i]] then
+  for i = 1, select("#", ...) do
+    if type(args[i]) ~= "nil" then
+      if type(args[i]) ~= "table" and not seen[args[i]] then
         seen[args[i]] = true
         result[#result + 1] = args[i]
       else
@@ -39,7 +39,7 @@ end
 ---@param table_path string|string[] Either a `.` separated string of table keys, or a list.
 ---@param value any
 local function tbl_set(t, table_path, value)
-  local keys = type(table_path) == 'table' and table_path or vim.split(table_path, '.', { plain = true })
+  local keys = type(table_path) == "table" and table_path or vim.split(table_path, ".", { plain = true })
 
   local cur = t
 
@@ -61,7 +61,7 @@ end
 ---@param table_path string|string[] Either a `.` separated string of table keys, or a list.
 ---@return any?
 local function tbl_access(t, table_path)
-  local keys = type(table_path) == 'table' and table_path or vim.split(table_path, '.', { plain = true })
+  local keys = type(table_path) == "table" and table_path or vim.split(table_path, ".", { plain = true })
 
   local cur = t
 
@@ -79,7 +79,7 @@ end
 ---@param t table
 ---@param table_path string|string[] Either a `.` separated string of table keys, or a list.
 local function tbl_ensure(t, table_path)
-  local keys = type(table_path) == 'table' and table_path or vim.split(table_path, '.', { plain = true })
+  local keys = type(table_path) == "table" and table_path or vim.split(table_path, ".", { plain = true })
 
   if not tbl_access(t, keys) then
     tbl_set(t, keys, {})
@@ -98,14 +98,14 @@ local function tbl_union_extend(t, ...)
     local sub = vec_union(ours, theirs)
 
     for k, v in pairs(ours) do
-      if type(k) ~= 'number' then
+      if type(k) ~= "number" then
         sub[k] = v
       end
     end
 
     for k, v in pairs(theirs) do
-      if type(k) ~= 'number' then
-        if type(v) == 'table' then
+      if type(k) ~= "number" then
+        if type(v) == "table" then
           sub[k] = recurse(sub[k] or {}, v)
         else
           sub[k] = v
@@ -116,7 +116,7 @@ local function tbl_union_extend(t, ...)
     return sub
   end
 
-  for _, theirs in ipairs { ... } do
+  for _, theirs in ipairs({ ... }) do
     res = recurse(res, theirs)
   end
 
@@ -124,95 +124,95 @@ local function tbl_union_extend(t, ...)
 end
 
 return {
-  -- {
-  --   'sindrets/diffview.nvim',
-  --   ft = { 'go', 'java', 'lua' },
-  --   lazy = true,
-  --   config = function()
-  --     local actions = require 'diffview.actions'
-  --     require('diffview').setup {
-  --       default_args = {
-  --         DiffviewOpen = { '--imply-local' },
-  --       },
-  --       file_panel = {
-  --         win_config = {
-  --           type = 'split',
-  --           position = 'left',
-  --           width = 65,
-  --         },
-  --       },
-  --       keymaps = {
-  --         view = {
-  --           {
-  --             'n',
-  --             'gh',
-  --             actions.view_windo(function(layout_name, sym)
-  --               if sym == 'b' then
-  --                 vim.cmd 'norm! [c'
-  --               end
-  --             end),
-  --           },
-  --           {
-  --             'n',
-  --             'gl',
-  --             actions.view_windo(function(layout_name, sym)
-  --               if sym == 'b' then
-  --                 vim.cmd 'norm! ]c'
-  --               end
-  --             end),
-  --           },
-  --         },
-  --       },
-  --       view = {
-  --         default = {
-  --           winbar_info = true,
-  --         },
-  --         -- file_history = {
-  --         --   winbar_info = true,
-  --         -- },
-  --       },
-  --       hooks = {
-  --         diff_buf_win_enter = function()
-  --           vim.opt_local.foldenable = false
-  --         end,
-  --         view_opened = function(view)
-  --           -- Highlight 'DiffChange' as 'DiffDelete' on the left, and 'DiffAdd' on
-  --           -- the right.
-  --           local function post_layout()
-  --             tbl_ensure(view, 'winopts.diff2.a')
-  --             tbl_ensure(view, 'winopts.diff2.b')
-  --             -- left
-  --             view.winopts.diff2.a = tbl_union_extend(view.winopts.diff2.a, {
-  --               winhl = {
-  --                 'DiffChange:DiffAddAsDelete',
-  --                 'DiffText:DiffDeleteText',
-  --               },
-  --             })
-  --             -- right
-  --             view.winopts.diff2.b = tbl_union_extend(view.winopts.diff2.b, {
-  --               winhl = {
-  --                 'DiffChange:DiffAdd',
-  --                 'DiffText:DiffAddText',
-  --               },
-  --             })
-  --           end
-  --
-  --           view.emitter:on('post_layout', post_layout)
-  --           post_layout()
-  --         end,
-  --       }, -- See ':h diffview-config-hooks'
-  --     }
-  --   end,
-  -- },
   {
-    'lewis6991/gitsigns.nvim',
+    "sindrets/diffview.nvim",
+    ft = { "go", "java", "lua" },
     lazy = true,
-    ft = { 'lua', 'go', 'cpp', 'java' },
+    config = function()
+      local actions = require("diffview.actions")
+      require("diffview").setup({
+        default_args = {
+          DiffviewOpen = { "--imply-local" },
+        },
+        file_panel = {
+          win_config = {
+            type = "split",
+            position = "left",
+            width = 65,
+          },
+        },
+        keymaps = {
+          view = {
+            {
+              "n",
+              "gh",
+              actions.view_windo(function(layout_name, sym)
+                if sym == "b" then
+                  vim.cmd("norm! [c")
+                end
+              end),
+            },
+            {
+              "n",
+              "gl",
+              actions.view_windo(function(layout_name, sym)
+                if sym == "b" then
+                  vim.cmd("norm! ]c")
+                end
+              end),
+            },
+          },
+        },
+        view = {
+          default = {
+            winbar_info = true,
+          },
+          -- file_history = {
+          --   winbar_info = true,
+          -- },
+        },
+        hooks = {
+          diff_buf_win_enter = function()
+            vim.opt_local.foldenable = false
+          end,
+          view_opened = function(view)
+            -- Highlight 'DiffChange' as 'DiffDelete' on the left, and 'DiffAdd' on
+            -- the right.
+            local function post_layout()
+              tbl_ensure(view, "winopts.diff2.a")
+              tbl_ensure(view, "winopts.diff2.b")
+              -- left
+              view.winopts.diff2.a = tbl_union_extend(view.winopts.diff2.a, {
+                winhl = {
+                  "DiffChange:DiffAddAsDelete",
+                  "DiffText:DiffDeleteText",
+                },
+              })
+              -- right
+              view.winopts.diff2.b = tbl_union_extend(view.winopts.diff2.b, {
+                winhl = {
+                  "DiffChange:DiffAdd",
+                  "DiffText:DiffAddText",
+                },
+              })
+            end
+
+            view.emitter:on("post_layout", post_layout)
+            post_layout()
+          end,
+        }, -- See ':h diffview-config-hooks'
+      })
+    end,
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    lazy = true,
+    ft = { "lua", "go", "cpp", "java" },
     opts = {
       current_line_blame = false,
       current_line_blame_opts = {
         virt_text = true,
-        virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+        virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
         delay = 550,
         ignore_whitespace = false,
         virt_text_priority = 100,
@@ -220,13 +220,13 @@ return {
     },
   },
   {
-    'pwntester/octo.nvim',
+    "pwntester/octo.nvim",
     config = function()
-      require('octo').setup {
+      require("octo").setup({
         ssh_aliases = {
-          ['roger.github.com'] = 'github.com',
+          ["roger.github.com"] = "github.com",
         },
-      }
+      })
     end,
   },
 }

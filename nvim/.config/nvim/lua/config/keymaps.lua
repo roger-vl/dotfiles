@@ -7,6 +7,10 @@ local toggle = function(key)
   toggleMap[key] = not toggleMap[key]
 end
 
+local function cmd(command)
+  return table.concat({ "<Cmd>", command, "<CR>" })
+end
+
 local map = vim.keymap
 local set = map.set
 local del = map.del
@@ -38,16 +42,11 @@ set("n", "<leader>qr", "q", { remap = true })
 set("n", "q", "<Nop>", { remap = true })
 
 -- windows movement
--- set('n', '<Left>', '<C-w>h', { desc = 'Go to Left Window', remap = true })
--- set('n', '<Right>', '<C-w>l', { desc = 'Go to Right Window', remap = true })
--- set('n', '<Up>', '<C-w>k', { desc = 'Go to Upper Window', remap = true })
--- set('n', '<Down>', '<C-w>j', { desc = 'Go to Lower Window', remap = true })
--- moving between splits smarts
-set("n", "<Left>", require("smart-splits").move_cursor_left)
-set("n", "<Down>", require("smart-splits").move_cursor_down)
-set("n", "<Up>", require("smart-splits").move_cursor_up)
-set("n", "<Right>", require("smart-splits").move_cursor_right)
-set("n", "<C-\\>", require("smart-splits").move_cursor_previous)
+-- set("n", "<C-h>", require("smart-splits").move_cursor_left, { remap = true })
+-- set("n", "<C-j>", require("smart-splits").move_cursor_down, { remap = true })
+-- set("n", "<C-k>", require("smart-splits").move_cursor_up, { remap = true })
+-- set("n", "<C-l>", require("smart-splits").move_cursor_right, { remap = true })
+-- set("n", "<C-i>", require("smart-splits").move_cursor_previous)
 
 -- resize splits smarts
 set("n", "<C-D-h>", require("smart-splits").resize_left)
@@ -55,24 +54,31 @@ set("n", "<C-D-j>", require("smart-splits").resize_down)
 set("n", "<C-D-k>", require("smart-splits").resize_up)
 set("n", "<C-D-l>", require("smart-splits").resize_right)
 
--- Resize window using <ctrl> arrow keys
--- set('n', '<C-D-j>', '<cmd>resize +2<cr>', { desc = 'Increase Window Height' })
--- set('n', '<C-D-k>', '<cmd>resize -2<cr>', { desc = 'Decrease Window Height' })
--- set('n', '<C-D-h>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease Window Width' })
--- set('n', '<C-D-l>', '<cmd>vertical resize +2<cr>', { desc = 'Increase Window Width' })
-
 -- windows
 set("n", "<C-.>", "<C-W>v", { desc = "Split Window Right", remap = true })
 set("n", "<C-,>", "<C-W>s", { desc = "Split Window Below", remap = true })
 set("n", "<C-;>", "<C-W>c", { desc = "Delete Window", remap = true })
+set("n", "<C-m>", cmd("WindowsEqualize"), { noremap = true, silent = true })
+set("n", "<M-CR>", cmd("WindowsMaximize"), { noremap = true, silent = true })
+-- set("n", "<C-o>", cmd("WindowsMaximizeVertically"), { noremap = true, silent = true })
 
+-- Resize window using <ctrl> arrow keys
+set("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
+set("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
+set("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
+set("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
+-- moving between splits smarts
+-- set("n", "<C-D-j>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
+-- set("n", "<C-D-k>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
+-- set("n", "<C-D-h>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
+-- set("n", "<C-D-l>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
 -- Move Line
-set("n", "<M-D-j>", "<cmd>m .+1<cr>==", { desc = "Move Down", silent = true })
-set("n", "<M-D-k>", "<cmd>m .-2<cr>==", { desc = "Move Up", silent = true })
-set("i", "<M-D-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down", silent = true })
-set("i", "<M-D-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up", silent = true })
-set("v", "<M-D-j>", ":m '>+1<cr>gv=gv", { desc = "Move Down", silent = true })
-set("v", "<M-D-k>", ":m '<-2<cr>gv=gv", { desc = "Move Up", silent = true })
+-- set("n", "<M-D-j>", "<cmd>m .+1<cr>==", { desc = "Move Down", silent = true })
+-- set("n", "<M-D-k>", "<cmd>m .-2<cr>==", { desc = "Move Up", silent = true })
+-- set("i", "<M-D-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down", silent = true })
+-- set("i", "<M-D-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up", silent = true })
+-- set("v", "<M-D-j>", ":m '>+1<cr>gv=gv", { desc = "Move Down", silent = true })
+-- set("v", "<M-D-k>", ":m '<-2<cr>gv=gv", { desc = "Move Up", silent = true })
 
 -- path change to current buff
 set("n", "<leader>ch", "<cmd>cd %:h<CR>", { noremap = true })
@@ -95,15 +101,6 @@ set("n", ",a", "<cmd>Lspsaga hover_doc<CR>", { noremap = true, silent = true })
 set("n", ",s", "<cmd>Lspsaga peek_definition<CR>", { noremap = true, silent = true })
 set("n", ",f", "<cmd>Lspsaga finder ++normal<CR>", { noremap = true, silent = true })
 set("n", ",d", "<cmd>Lspsaga outline<CR>", { noremap = true, silent = true })
-
--- windows
-local function cmd(command)
-  return table.concat({ "<Cmd>", command, "<CR>" })
-end
-
-set("n", "<C-M>", cmd("WindowsMaximize"), { noremap = true, silent = true })
-set("n", "<C-o>", cmd("WindowsMaximizeVertically"), { noremap = true, silent = true })
-set("n", "<C-D-M>", cmd("WindowsEqualize"), { noremap = true, silent = true })
 
 -- codeRunner
 set("n", "<leader>rc", function()

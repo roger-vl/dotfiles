@@ -260,6 +260,8 @@ return {
           },
 
           find_files = {
+            no_ignore = true,
+            hidden = true,
             prompt_title = "Files",
             results_title = "",
             follow = true,

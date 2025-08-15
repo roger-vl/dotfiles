@@ -1,11 +1,9 @@
-return {
-  {
-    "olimorris/codecompanion.nvim",
-    dependencies = {
-      "ravitemer/codecompanion-history.nvim",
-    },
-  },
+local CONSTANTS = {
+  NAME = "File",
+  PROMPT = "Select file(s)",
+}
 
+return {
   {
     "ravitemer/mcphub.nvim",
     enabled = false,
@@ -21,6 +19,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
+      "ravitemer/codecompanion-history.nvim",
     },
     config = function()
       require("codecompanion").setup({
