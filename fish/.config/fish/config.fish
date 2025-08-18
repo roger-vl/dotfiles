@@ -21,7 +21,8 @@ function fish
 end
 
 # Alias
-alias vi=nvim
+# default nvim vi="NVIM_APPNAME=nvim nvim"
+alias vi="NVIM_APPNAME=nvim-dev nvim"
 alias d=docker
 alias g=git
 alias lg=lazygit
