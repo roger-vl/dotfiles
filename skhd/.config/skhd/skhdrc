@@ -3,11 +3,11 @@ ctrl - h [
   *         : skhd -k "left"
   "ghostty" ~
 ]
-ctrl - j [
+ctrl - n [
   *         : skhd -k "down"
   "ghostty" ~
 ]
-ctrl - k [
+ctrl - p [
   *         : skhd -k "up"
   "ghostty" ~
 ]

@@ -1,3 +1,5 @@
+local M = {}
+
 local state = {
   floating = {
     buf = -1,
@@ -50,5 +52,7 @@ local toggle_term = function()
   end
 end
 
-vim.api.nvim_create_user_command("FloatermToggle", toggle_term, {})
-vim.keymap.set({ "n", "t" }, "<space>tt", toggle_term)
+-- vim.api.nvim_create_user_command("FloatermToggle", toggle_term, {})
+M.toggle = toggle_term
+
+return M
