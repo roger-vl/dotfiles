@@ -45,11 +45,15 @@ ctrl + shift - l : yabai -m window --warp east
 # ctrl + alt - y : yabai -m window --space 1
 #
 # # rotate layout clockwise
-alt - r : yabai -m space --rotate 270
+# alt - r : yabai -m space --rotate 270
+
+
+
+
 # # flip along y-axis
-alt - y : yabai -m space --mirror y-axis
+# alt - y : yabai -m space --mirror y-axis
 # # flip along x-axis
-alt - x : yabai -m space --mirror x-axis
+# alt - x : yabai -m space --mirror x-axis
 # # toggle window float
 # #                       --grid <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
 alt - i : yabai -m window --toggle float --grid 24:24:1:1:22:22

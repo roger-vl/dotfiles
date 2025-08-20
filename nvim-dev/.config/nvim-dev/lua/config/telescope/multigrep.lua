@@ -44,9 +44,9 @@ local live_multigrep = function(opts)
   }):find()
 end
 
-M.setup = {
+M.setup = function()
   vim.keymap.set("n", ";w", live_multigrep)
-}
+end
 
 
 return M
