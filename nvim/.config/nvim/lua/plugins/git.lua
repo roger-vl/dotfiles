@@ -204,6 +204,7 @@ return {
       })
     end,
   },
+
   {
     "lewis6991/gitsigns.nvim",
     lazy = true,
@@ -219,10 +220,12 @@ return {
       },
     },
   },
+
   {
     "pwntester/octo.nvim",
     config = function()
       require("octo").setup({
+        picker = "snacks",
         ssh_aliases = {
           ["roger.github.com"] = "github.com",
         },

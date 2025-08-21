@@ -11,12 +11,12 @@ local function focus_preview(prompt_bufnr)
     vim.cmd(string.format("noautocmd lua vim.api.nvim_set_current_win(%s)", prompt_win))
   end, { buffer = bufnr })
   vim.cmd(string.format("noautocmd lua vim.api.nvim_set_current_win(%s)", winid))
-  -- api.nvim_set_current_win(winid)
 end
 
 return {
   {
     "nvim-telescope/telescope.nvim",
+    enabled = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
       {
@@ -27,28 +27,6 @@ return {
     },
 
     keys = {
-      { "<leader><leader>", false },
-      {
-        "<leader>gb",
-        vim.schedule_wrap(function()
-          require("telescope.builtin").git_branches({})
-        end),
-      },
-      {
-        ";a",
-        vim.schedule_wrap(function()
-          require("telescope").extensions.projects.projects({})
-        end),
-      },
-      {
-        "<leader>fP",
-        function()
-          require("telescope.builtin").find_files({
-            cwd = require("lazy.core.config").options.root,
-          })
-        end,
-        desc = "Find Plugin File",
-      },
       {
         "<D-e>",
         function()
@@ -60,18 +38,6 @@ return {
           })
         end,
         desc = "Buffers",
-      },
-      {
-        "<leader>fs",
-        function()
-          local builtin = require("telescope.builtin")
-          builtin.find_files({
-            no_ignore = true,
-            hidden = true,
-            search_dirs = { "~/Documents/creeps/rest/" },
-          })
-        end,
-        desc = "Lists request files",
       },
       {
         "<leader>fo",

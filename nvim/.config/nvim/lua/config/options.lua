@@ -1,9 +1,9 @@
 local opt = vim.opt
 
-vim.g.lazyvim_picker = "telescope"
+vim.g.lazyvim_picker = "snacks"
 
 opt.scrolloff = 30
-opt.virtualedit = "onemore"
+-- opt.virtualedit = "onemore"
 opt.fillchars:append("eob: ")
 -- vim.o.background = 'dark'
 vim.opt.spelllang = "en_us,es"

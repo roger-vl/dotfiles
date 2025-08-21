@@ -1,6 +1,4 @@
 return {
-  { "nvim-treesitter/playground", enabled = false, cmd = "TSPlaygroundToggle" },
-
   {
     "neovim/nvim-lspconfig",
     opts = {
@@ -64,7 +62,6 @@ return {
           ["markdownlint-cli2"] = {
             args = { "--disable", "MD013", "--" },
           },
-          -- "cspell",
         },
       },
     },
@@ -98,6 +95,12 @@ return {
         "mermaid",
         "hurl",
         "latex",
+        "css",
+        "norg",
+        "scss",
+        "svelte",
+        "typst",
+        "vue",
       })
     end,
   },

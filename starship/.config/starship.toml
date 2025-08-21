@@ -5,19 +5,22 @@ add_newline = true
 command_timeout = 2000
 
 # $os\
+# $php\
+# $java\
+# $git_commit\
+# $git_metrics\
+# $git_state\
+# ${custom.memory_usage}\
+# ${custom.battery}\
+# ${custom.keyboard_layout}\
+# $git_status\
 
 format = """
 $shell\
 $directory\
 $golang\
 $nodejs\
-$php\
-$java\
 $git_branch\
-$git_commit\
-$git_status\
-$git_metrics\
-$git_state\
 $c\
 $rust\
 $kotlin\
@@ -28,9 +31,6 @@ $docker_context\
 $kubernetes\
 $container\
 $jobs\
-${custom.memory_usage}\
-${custom.battery}\
-${custom.keyboard_layout}\
 $cmd_duration\
 $status\
 $line_break\
@@ -154,12 +154,12 @@ read_only_style = "fg:color_directory"
 repo_root_style = "bold fg:color_directory"
 format = "[$path]($style)"
 read_only = ""
-home_symbol = " "
-truncation_symbol = "…/"
+home_symbol = ""
+truncation_symbol = " …/"
 truncation_length = 0
-truncate_to_repo = true
+truncate_to_repo = false
 fish_style_pwd_dir_length = 0
-use_logical_path = true
+use_logical_path = false
 
 [git_branch]
 symbol = ""
@@ -283,8 +283,8 @@ disabled = false
 
 [shell]
 disabled = false
-# format = '[$indicator  ]($style)'
-format = '[ 󰈺 ]($style)'
+format = '[  ]($style)'
+# format = '[ 󰈺 ]($style)'
 bash_indicator = "bash"
 fish_indicator = "fsh"
 zsh_indicator = "zsh"

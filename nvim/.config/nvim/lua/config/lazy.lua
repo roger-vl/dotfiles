@@ -17,7 +17,7 @@ require("lazy").setup({
       "LazyVim/LazyVim",
       import = "lazyvim.plugins",
       opts = {
-        colorscheme = "catppuccin",
+        colorscheme = "tokyonight",
         news = {
           lazyvim = true,
           neovim = true,
@@ -30,8 +30,8 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.go" },
     { import = "lazyvim.plugins.extras.lang.python" },
     { import = "lazyvim.plugins.extras.lang.markdown" },
-    { import = "lazyvim.plugins.extras.lang.json" },
-    { import = "lazyvim.plugins.extras.lang.yaml" },
+    -- { import = "lazyvim.plugins.extras.lang.json" },
+    -- { import = "lazyvim.plugins.extras.lang.yaml" },
     -- last
     { import = "plugins" },
   },
@@ -41,15 +41,12 @@ require("lazy").setup({
   },
   checker = { enabled = true },
   performance = {
-    cache = {
-      enabled = true,
-    },
     rtp = {
       disabled_plugins = {
         "gzip",
-        "matchit",
-        "matchparen",
-        "netrwPlugin",
+        -- "matchit",
+        -- "matchparen",
+        -- "netrwPlugin",
         "tarPlugin",
         "tohtml",
         "tutor",
@@ -57,8 +54,8 @@ require("lazy").setup({
       },
     },
   },
-  ui = {
-    backdrop = 100,
-  },
-  debug = false,
+  -- ui = {
+  --   backdrop = 100,
+  -- },
+  -- debug = false,
 })
