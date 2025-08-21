@@ -55,14 +55,14 @@ local config = {
       },
       { "progress", color = { fg = colors.fg, gui = "bold" } },
       { "location" },
-      {
-        function()
-          return require("nvim-navic").get_location()
-        end,
-        cond = function()
-          return require("nvim-navic").is_available()
-        end,
-      },
+      -- {
+      --   function()
+      --     return require("nvim-navic").get_location()
+      --   end,
+      --   cond = function()
+      --     return require("nvim-navic").is_available()
+      --   end,
+      -- },
     },
   },
   inactive_sections = {
