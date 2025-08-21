@@ -22,7 +22,7 @@ end
 
 # Alias
 # default nvim vi="NVIM_APPNAME=nvim nvim"
-alias vi="NVIM_APPNAME=nvim-dev nvim"
+alias vi="NVIM_APPNAME=nvim nvim"
 alias d=docker
 alias g=git
 alias lg=lazygit
