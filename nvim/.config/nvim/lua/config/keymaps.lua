@@ -62,7 +62,6 @@ set("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
 set("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
 
 -- simple move
-
 set({ "n", "v" }, "fh", "g0", { noremap = true, silent = true })
 set({ "n", "v" }, "fl", "g$", { noremap = true, silent = true })
 

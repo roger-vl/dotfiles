@@ -70,53 +70,53 @@ vim.api.nvim_set_hl(0, "C_var8", { fg = color.palette.C_var8 })
 vim.api.nvim_set_hl(0, "C_key", { fg = color.palette.Keywords })
 vim.api.nvim_set_hl(0, "Operator", { fg = "#A9B7C6" })
 
-vim.highlight.priorities.semantic_tokens = 90 -- Or any number lower than 100, treesitter's priority level
+-- vim.highlight.priorities.semantic_tokens = 97 -- Or any number lower than 100, treesitter's priority level
 local addHighlightToken = function(token, args, group)
   vim.lsp.semantic_tokens.highlight_token(token, args.buf, args.data.client_id, group, { priority = 101 })
 end
 
--- color autocmd semantic token
-vim.api.nvim_create_autocmd("LspTokenUpdate", {
-  callback = function(args)
-    local token = args.data.token
-    if
-      (token.type == "variable" or token.type == "class")
-      and token.modifiers.readonly
-      and not token.modifiers.defaultLibrary
-    then
-      addHighlightToken(token, args, "C_Constants")
-    end
-    if token.type.type then
-      addHighlightToken(token, args, "C_Definitions")
-    end
-    -- if token.type == "function" or token.type == "method" then
-    --   addHighlightToken(token, args, "C_Method")
-    -- end
-    if
-      (token.type == "type" and (token.modifiers.struct or token.modifiers.defaultLibrary))
-      and not token.modifiers.readonly
-      and not token.modifiers.interface
-    then
-      addHighlightToken(token, args, "C_Type")
-    end
-    if token.type == "namespace" then
-      addHighlightToken(token, args, "C_Modules")
-      -- vim.api.nvim_set_hl(0, "@property", { fg = color.palette.VariableMember })
-      -- vim.api.nvim_set_hl(0, "@variable.member", { fg = color.palette.VariableMember })
-    end
-    if token.type == "variable" then
-      local text = vim.api.nvim_buf_get_text(args.buf, token.line, token.start_col, token.line, token.end_col, {})[1]
-      addHighlightToken(token, args, getGroup(token, text))
-      -- addHighlightToken(token, args, 'C_Var')
-    end
-    if token.type == "parameter" then
-      addHighlightToken(token, args, "C_Param")
-    end
-    if token.type == "type" and token.modifiers.interface then
-      addHighlightToken(token, args, "C_Interface")
-    end
-  end,
-})
+-- -- color autocmd semantic token
+-- vim.api.nvim_create_autocmd("LspTokenUpdate", {
+--   callback = function(args)
+--     local token = args.data.token
+--     if
+--       (token.type == "variable" or token.type == "class")
+--       and token.modifiers.readonly
+--       and not token.modifiers.defaultLibrary
+--     then
+--       addHighlightToken(token, args, "C_Constants")
+--     end
+--     if token.type.type then
+--       addHighlightToken(token, args, "C_Definitions")
+--     end
+--     if token.type == "function" or token.type == "method" then
+--       addHighlightToken(token, args, "C_Method")
+--     end
+--     if
+--       (token.type == "type" and (token.modifiers.struct or token.modifiers.defaultLibrary))
+--       and not token.modifiers.readonly
+--       and not token.modifiers.interface
+--     then
+--       addHighlightToken(token, args, "C_Type")
+--     end
+--     if token.type == "namespace" then
+--       addHighlightToken(token, args, "C_Modules")
+--       vim.api.nvim_set_hl(0, "@property", { fg = color.palette.VariableMember })
+--       vim.api.nvim_set_hl(0, "@variable.member", { fg = color.palette.VariableMember })
+--     end
+--     if token.type == "variable" then
+--       local text = vim.api.nvim_buf_get_text(args.buf, token.line, token.start_col, token.line, token.end_col, {})[1]
+--       addHighlightToken(token, args, getGroup(token, text))
+--       addHighlightToken(token, args, "C_Var")
+--     end
+--     if token.type == "parameter" then
+--       addHighlightToken(token, args, "C_Param")
+--     end
+--     if token.type == "type" and token.modifiers.interface then
+--       addHighlightToken(token, args, "C_Interface")
+--     end
+--   end,
+-- })
 
 local base_statusline_highlights =
   { "StatusLine", "StatusLineNC", "Tabline", "TabLineFill", "TabLineSel", "Winbar", "WinbarNC" }
