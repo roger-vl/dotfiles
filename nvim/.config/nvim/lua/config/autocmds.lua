@@ -89,9 +89,9 @@ vim.api.nvim_create_autocmd("LspTokenUpdate", {
     if token.type.type then
       addHighlightToken(token, args, "C_Definitions")
     end
-    if token.type == "function" or token.type == "method" then
-      addHighlightToken(token, args, "C_Method")
-    end
+    -- if token.type == "function" or token.type == "method" then
+    --   addHighlightToken(token, args, "C_Method")
+    -- end
     if
       (token.type == "type" and (token.modifiers.struct or token.modifiers.defaultLibrary))
       and not token.modifiers.readonly
@@ -101,8 +101,8 @@ vim.api.nvim_create_autocmd("LspTokenUpdate", {
     end
     if token.type == "namespace" then
       addHighlightToken(token, args, "C_Modules")
-      vim.api.nvim_set_hl(0, "@property", { fg = color.palette.VariableMember })
-      vim.api.nvim_set_hl(0, "@variable.member", { fg = color.palette.VariableMember })
+      -- vim.api.nvim_set_hl(0, "@property", { fg = color.palette.VariableMember })
+      -- vim.api.nvim_set_hl(0, "@variable.member", { fg = color.palette.VariableMember })
     end
     if token.type == "variable" then
       local text = vim.api.nvim_buf_get_text(args.buf, token.line, token.start_col, token.line, token.end_col, {})[1]

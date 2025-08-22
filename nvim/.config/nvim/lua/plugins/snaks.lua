@@ -3,6 +3,9 @@ return {
   opts = {
     scroll = { enabled = true },
     bigfile = {},
+    explorer = {
+      replace_netrw = true,
+    },
     statuscolumn = { enabled = true },
     image = { enabled = true },
     zen = {

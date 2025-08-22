@@ -208,7 +208,7 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     lazy = true,
-    ft = { "lua", "go", "cpp", "java" },
+    ft = { "lua", "go", "cpp" },
     opts = {
       current_line_blame = false,
       current_line_blame_opts = {
