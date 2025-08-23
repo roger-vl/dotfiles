@@ -2,7 +2,7 @@ return {
   "snacks.nvim",
   opts = {
     scroll = { enabled = true },
-    bigfile = {},
+    -- bigfile = {},
     explorer = {
       replace_netrw = true,
     },
