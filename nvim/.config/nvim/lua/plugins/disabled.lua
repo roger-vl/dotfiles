@@ -5,6 +5,6 @@ return {
   { "folke/todo-comments.nvim", enabled = false },
   {
     "norcalli/nvim-colorizer.lua",
-    enabled = false,
+    enabled = true,
   },
 }

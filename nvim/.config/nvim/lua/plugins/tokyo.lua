@@ -127,7 +127,52 @@ return {
       hl.WhichKeyGroup.fg = "#E9916D"
       hl.WhichKey.fg = "#FACB81"
       hl.WhichKeySeparator.fg = "#DF784E"
+
+      hl.NoiceCmdlinePopupBorder = { fg = oc.palette.Border }
+      hl.NoiceCmdlinePopupBorderLua = { fg = oc.palette.Border }
+      hl.NoiceCmdlineIcon = { fg = oc.overrides.flamingo }
+
+      hl.SnacksNotifierWarn = {
+        fg = oc.overrides.peach,
+      }
+
+      hl.SnacksNotifierBorderWarn = {
+        fg = oc.overrides.overlay2,
+      }
+
+      hl.SnacksNotifierFooterWarn = {
+        fg = oc.overrides.overlay2,
+      }
+
+      hl.SnacksNotifierInfo = {
+        fg = oc.overrides.overlay2,
+      }
+
+      hl.SnacksNotifierTrace = {
+        fg = oc.overrides.overlay2,
+      }
+
+      hl.SnacksNotifierDebug = {
+        fg = oc.overrides.overlay2,
+      }
+
+      hl.SnacksNotifierHistory = {
+        fg = oc.overrides.overlay2,
+      }
+
+      hl.SnacksNotifierHistoryDateTime = {
+        fg = oc.overrides.overlay2,
+      }
+
+      hl.NotifyBackground = {
+        bg = "NONE",
+        fg = oc.overrides.overlay2,
+      }
+
+      hl.NotifyWARNTitle = {
+        bg = "NONE",
+        fg = oc.overrides.overlay2,
+      }
     end,
   },
 }
--- toSomeMore comment
