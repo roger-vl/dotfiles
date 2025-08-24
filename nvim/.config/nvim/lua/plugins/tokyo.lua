@@ -3,7 +3,7 @@ local oc = require("colors")
 return {
   "folke/tokyonight.nvim",
   lazy = false,
-  priority = 1000,
+  priority = 1500,
   opts = {
     terminal_colors = true,
     transparent = true,
@@ -22,6 +22,7 @@ return {
       hl["@lsp.type.type"] = { link = "@lsp" }
       hl["@lsp.typemod.type.string"] = { link = "@lsp" }
       hl["@lsp.type.string"] = { link = "@lsp" }
+      hl.SnippetTabstop = { link = "@lsp" }
 
       hl["@variable"] = { fg = oc.palette.VariableT }
       hl["@number"] = { fg = oc.palette.Number }

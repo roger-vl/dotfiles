@@ -20,7 +20,7 @@ local colors = {
 local config = {
   options = {
     globalstatus = true,
-    disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
+    disabled_filetypes = { statusline = { "snacks_dashboard", "alpha", "starter" } },
     component_separators = "",
     section_separators = "",
     theme = {

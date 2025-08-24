@@ -7,7 +7,19 @@ return {
       replace_netrw = true,
     },
     statuscolumn = { enabled = true },
-    image = { enabled = true },
+    styles = {
+      snacks_image = {
+        relative = "editor",
+        col = -1,
+      },
+    },
+    image = {
+      enabled = true,
+      force = true,
+      doc = {
+        inline = false,
+      },
+    },
     zen = {
       toggles = {
         dim = false,
