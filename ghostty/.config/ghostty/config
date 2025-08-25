@@ -1,5 +1,5 @@
 font-family = "MesloLG Nerd Font Mono"
-font-size = 18
+font-size = 16
 theme = elemental
 # gruvbox-material
 shell-integration = fish

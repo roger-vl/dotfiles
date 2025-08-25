@@ -1,3 +1,8 @@
+# Default mode
+:: default : echo -n "quit" | nc -4u -w0 localhost 1738
+:: windows : ANYBAR_PORT=1738 ANYBAR_INIT=red open -na AnyBar
+
+
 # arrow movement
 ctrl - h [
   *         : skhd -k "left"
@@ -16,29 +21,37 @@ ctrl - l [
   "ghostty" ~
 ]
 
+
+alt + ctrl + shift + cmd - space ; windows
+
 # change window focus within space
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - h : yabai -m window --focus west
-alt - l : yabai -m window --focus east
-#
-# # resize windows
-shift + alt - h : yabai -m window --resize right:-30:0 2> /dev/null || yabai -m window --resize left:-30:0 2> /dev/null
-shift + alt - j : yabai -m window --resize bottom:0:20 2> /dev/null || yabai -m window --resize top:0:20 2> /dev/null
-shift + alt - k : yabai -m window --resize bottom:0:-20 2> /dev/null || yabai -m window --resize top:0:-20 2> /dev/null
-shift + alt - l : yabai -m window --resize right:30:0 2> /dev/null || yabai -m window --resize left:30:0 2> /dev/null
-#
+windows < escape ; default
+windows < j : yabai -m window --focus south && skhd -k "escape"
+windows < k : yabai -m window --focus north && skhd -k "escape"
+windows < h : yabai -m window --focus west && skhd -k "escape"
+windows < l : yabai -m window --focus east && skhd -k "escape"
+# #                       --grid <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
+windows < i : yabai -m window --toggle float --grid 24:24:1:1:22:22
+windows < u : yabai -m window --toggle float --grid 24:24:2:2:20:20
+# # maximize a window
+windows < m : yabai -m window --toggle zoom-fullscreen
 # # swap windows
-ctrl + alt - j : yabai -m window --swap south
-ctrl + alt - k : yabai -m window --swap north
-ctrl + alt - h : yabai -m window --swap west
-ctrl + alt - l : yabai -m window --swap east
+windows < ctrl - j : yabai -m window --swap south
+windows < ctrl - k : yabai -m window --swap north
+windows < ctrl - h : yabai -m window --swap west
+windows < ctrl - l : yabai -m window --swap east
+# # resize windows
+windows < alt - h : yabai -m window --resize right:-30:0 2> /dev/null || yabai -m window --resize left:-30:0 2> /dev/null
+windows < alt - j : yabai -m window --resize bottom:0:20 2> /dev/null || yabai -m window --resize top:0:20 2> /dev/null
+windows < alt - k : yabai -m window --resize bottom:0:-20 2> /dev/null || yabai -m window --resize top:0:-20 2> /dev/null
+windows < alt - l : yabai -m window --resize right:30:0 2> /dev/null || yabai -m window --resize left:30:0 2> /dev/null
+#
 #
 # # move window and split
-ctrl + shift - j : yabai -m window --warp south
-ctrl + shift - k : yabai -m window --warp north
-ctrl + shift - h : yabai -m window --warp west
-ctrl + shift - l : yabai -m window --warp east
+# ctrl + shift - j : yabai -m window --warp south
+# ctrl + shift - k : yabai -m window --warp north
+# ctrl + shift - h : yabai -m window --warp west
+# ctrl + shift - l : yabai -m window --warp east
 #
 # #move window to prev and next space
 # ctrl + alt - p : yabai -m window --space 2
@@ -55,19 +68,14 @@ ctrl + shift - l : yabai -m window --warp east
 # # flip along x-axis
 # alt - x : yabai -m space --mirror x-axis
 # # toggle window float
-# #                       --grid <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
-alt - i : yabai -m window --toggle float --grid 24:24:1:1:22:22
-alt - u : yabai -m window --toggle float --grid 24:24:2:2:20:20
 #
 # # sticky window
 # alt - u : yabai -m window --toggle sticky
 #
-# # maximize a window
-alt - m : yabai -m window --toggle zoom-fullscreen
 # # balance out tree of windows (resize to occupy same area)
-shift + alt - e : yabai -m space --balance
+# shift + alt - e : yabai -m space --balance
 # # back layout to bsp
-shift + alt - a : yabai -m space --layout bsp
+# shift + alt - a : yabai -m space --layout bsp
 #
 # # stop/start/restart yabai
 # # ctrl + alt - q : brew services stop yabai

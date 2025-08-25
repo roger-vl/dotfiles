@@ -1,6 +1,7 @@
 return {
   {
     "smoka7/hop.nvim",
+    enabled = false,
     version = "*",
     opts = {},
     config = function()
@@ -12,7 +13,7 @@ return {
     event = "VeryLazy",
     config = true,
     opts = {
-      retirementAgeMins = 8,
+      retirementAgeMins = 5,
       ignoredFiletypes = { "TelescopePrompt", "sagafinder", "CodeCompanion" },
       notificationOnAutoClose = false,
     },
