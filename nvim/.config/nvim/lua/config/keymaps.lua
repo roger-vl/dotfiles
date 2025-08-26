@@ -63,6 +63,10 @@ set("n", ",f", "<cmd>Lspsaga finder ++normal<CR>", { noremap = true, silent = tr
 set("n", ",d", "<cmd>Lspsaga outline<CR>", { noremap = true, silent = true })
 
 -- Pickers
+set("n", "<leader><space>", function()
+  Snacks.picker.smart({ filter = { cwd = true } })
+end, { desc = "Find smart", silent = true, noremap = true })
+
 set("n", "<leader>f.", function()
   Snacks.picker.resume()
 end, { desc = "Find resume last pickers", silent = true, noremap = true })

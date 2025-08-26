@@ -11,7 +11,7 @@ return {
       conceal_delimiters = false,
     },
     heading = {
-      sign = true,
+      sign = false,
       icons = {},
     },
     checkbox = {

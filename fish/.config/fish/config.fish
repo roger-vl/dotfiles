@@ -61,6 +61,17 @@ if type -q trash
 end
 
 # tools
-starship init fish | source
+# config.fish
 zoxide init fish | source
 ~/.local/bin/mise activate fish | source
+# starship
+starship init fish | source
+function starship_transient_prompt_func
+    # tput cuu1 # Move cursor up one line to remove newline after transient prompt
+    set_color 35312c
+    echo "❯ "
+end
+function prompt_newline --on-event fish_postexec
+    echo
+end
+alias clear "command clear; commandline -f clear-screen"
