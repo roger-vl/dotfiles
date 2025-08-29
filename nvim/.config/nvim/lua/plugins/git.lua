@@ -228,6 +228,7 @@ return {
         picker = "snacks",
         ssh_aliases = {
           ["roger.github.com"] = "github.com",
+          ["github.com-emu"] = "github.com",
         },
       })
     end,

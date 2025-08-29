@@ -2,6 +2,20 @@ return {
   "snacks.nvim",
   opts = {
     picker = {
+      win = {
+        input = {
+          keys = {
+            ["<C-.>"] = { "edit_vsplit", mode = { "i", "n" } },
+            ["<C-,>"] = { "edit_split", mode = { "i", "n" } },
+          },
+        },
+        list = {
+          keys = {
+            ["<C-.>"] = "edit_vsplit",
+            ["<C-,>"] = "edit_split",
+          },
+        },
+      },
       files = {
         hidden = true,
       },
@@ -28,10 +42,10 @@ return {
     zen = {
       toggles = {
         dim = false,
-        -- git_signs = true,
+        git_signs = true,
         -- mini_diff_signs = true,
         -- inlay_hints = true,
-        -- diagnostics = true,
+        diagnostics = true,
       },
       show = {
         statusline = true,
