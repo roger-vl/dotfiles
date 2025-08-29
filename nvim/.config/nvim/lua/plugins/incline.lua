@@ -78,7 +78,7 @@ local function shorten_path_styled(props, opts)
   local buf = props.buf
   local path = vim.api.nvim_buf_get_name(buf)
   opts = opts or {}
-  local head_style = opts.head_style or {}
+  -- local head_style = opts.head_style or {}
   local tail_style = opts.tail_style or {}
   local result = shorten_path(
     path,

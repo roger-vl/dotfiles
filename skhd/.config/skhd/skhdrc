@@ -1,6 +1,7 @@
 # Default mode
 :: default : echo -n "quit" | nc -4u -w0 localhost 1738
 :: windows : ANYBAR_PORT=1738 ANYBAR_INIT=red open -na AnyBar
+:: ress : ANYBAR_PORT=1738 ANYBAR_INIT=blue open -na AnyBar
 
 
 # arrow movement
@@ -22,29 +23,35 @@ ctrl - l [
 ]
 
 
-alt + ctrl + shift + cmd - space ; windows
+meh - j : yabai -m window --focus south
+meh - k : yabai -m window --focus north
+meh - h : yabai -m window --focus west
+meh - l : yabai -m window --focus east
+
+# #                       --grid <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
+meh - i : yabai -m window --toggle float --grid 24:24:1:1:22:22
+meh - u : yabai -m window --toggle float --grid 24:24:2:2:20:20
+meh - m : yabai -m window --toggle zoom-fullscreen
+
+meh - o ; windows
+meh - p ; ress
 
 # change window focus within space
 windows < escape ; default
-windows < j : yabai -m window --focus south && skhd -k "escape"
-windows < k : yabai -m window --focus north && skhd -k "escape"
-windows < h : yabai -m window --focus west && skhd -k "escape"
-windows < l : yabai -m window --focus east && skhd -k "escape"
-# #                       --grid <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
-windows < i : yabai -m window --toggle float --grid 24:24:1:1:22:22
-windows < u : yabai -m window --toggle float --grid 24:24:2:2:20:20
-# # maximize a window
-windows < m : yabai -m window --toggle zoom-fullscreen
-# # swap windows
-windows < ctrl - j : yabai -m window --swap south
-windows < ctrl - k : yabai -m window --swap north
-windows < ctrl - h : yabai -m window --swap west
-windows < ctrl - l : yabai -m window --swap east
+ress < escape ; default
+# <M-C-S-L>
+
 # # resize windows
-windows < alt - h : yabai -m window --resize right:-30:0 2> /dev/null || yabai -m window --resize left:-30:0 2> /dev/null
-windows < alt - j : yabai -m window --resize bottom:0:20 2> /dev/null || yabai -m window --resize top:0:20 2> /dev/null
-windows < alt - k : yabai -m window --resize bottom:0:-20 2> /dev/null || yabai -m window --resize top:0:-20 2> /dev/null
-windows < alt - l : yabai -m window --resize right:30:0 2> /dev/null || yabai -m window --resize left:30:0 2> /dev/null
+ress < h : yabai -m window --resize right:-30:0 2> /dev/null || yabai -m window --resize left:-30:0 2> /dev/null
+ress < j : yabai -m window --resize bottom:0:20 2> /dev/null || yabai -m window --resize top:0:20 2> /dev/null
+ress < k : yabai -m window --resize bottom:0:-20 2> /dev/null || yabai -m window --resize top:0:-20 2> /dev/null
+ress < l : yabai -m window --resize right:30:0 2> /dev/null || yabai -m window --resize left:30:0 2> /dev/null
+# # maximize a window
+# # swap windows
+windows < j : yabai -m window --swap south && skhd -k "escape"
+windows < k : yabai -m window --swap north && skhd -k "escape"
+windows < h : yabai -m window --swap west && skhd -k "escape"
+windows < l : yabai -m window --swap east && skhd -k "escape"
 #
 #
 # # move window and split

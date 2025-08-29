@@ -48,7 +48,7 @@ innervar = "#B15D5E"
 
 [os]
 format = '[-](fg:current_line)[](fg:box_back)[$symbol ](fg:variablet bg:box_back)'
-disabled = false
+disabled = true
 
 [os.symbols]
 Alpine = ''

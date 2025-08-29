@@ -41,7 +41,15 @@ local config = {
     lualine_y = {},
     lualine_z = {},
     lualine_c = {
-      "buffers",
+      {
+        "buffers",
+        hide_filename_extension = true,
+        use_mode_colors = true,
+        buffers_color = {
+          active = "lualine_buff_active", -- Color for active buffer.
+          -- inactive = "lualine_buff_inactive", -- Color for inactive buffer.
+        },
+      },
     },
     lualine_x = {
       {
@@ -53,16 +61,9 @@ local config = {
         end,
         -- color = Snacks.utility.color 'Debug',
       },
+      { "tabs" },
       { "progress", color = { fg = colors.fg, gui = "bold" } },
       { "location" },
-      -- {
-      --   function()
-      --     return require("nvim-navic").get_location()
-      --   end,
-      --   cond = function()
-      --     return require("nvim-navic").is_available()
-      --   end,
-      -- },
     },
   },
   inactive_sections = {
