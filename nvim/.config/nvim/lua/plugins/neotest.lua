@@ -20,7 +20,7 @@ return {
       concurrent = true,
     },
     summary = {
-      animated = true,
+      animated = false,
     },
     adapters = {
       ["neotest-golang"] = {
@@ -28,6 +28,26 @@ return {
         warn_test_name_dupes = false,
         testify_enabled = true,
       },
+    },
+    consumers = {
+      notify = function(client)
+        client.listeners.results = function(_, results, partial)
+          if partial then
+            return
+          end
+
+          local total = 0
+          local passed = 0
+          for _, r in pairs(results) do
+            total = total + 1
+            if r.status == "passed" then
+              passed = passed + 1
+            end
+          end
+
+          vim.notify(passed .. "/" .. total .. " tests passed.")
+        end
+      end,
     },
   },
 }
