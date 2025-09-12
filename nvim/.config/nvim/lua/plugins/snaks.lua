@@ -7,6 +7,9 @@ return {
           keys = {
             ["<C-.>"] = { "edit_vsplit", mode = { "i", "n" } },
             ["<C-,>"] = { "edit_split", mode = { "i", "n" } },
+            ["<C-h>"] = { "toggle_hidden", mode = { "i", "n" } },
+            ["<C-i>"] = { "toggle_ignored", mode = { "i", "n" } },
+            ["<C-f>"] = { "toggle_follow", mode = { "i", "n" } },
           },
         },
         list = {
@@ -18,6 +21,7 @@ return {
       },
       files = {
         hidden = true,
+        sort = { fields = { "score:asc", "idx" } },
       },
     },
     scroll = { enabled = true },
@@ -33,7 +37,7 @@ return {
       },
     },
     image = {
-      enabled = true,
+      enabled = false,
       force = true,
       doc = {
         inline = false,

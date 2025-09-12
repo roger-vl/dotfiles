@@ -3,6 +3,8 @@ local ownColors = require("colors")
 return {
   {
     "petertriho/nvim-scrollbar",
+    lazy = true,
+    ft = { "lua", "go", "markdown" },
     config = function()
       local colors = require("tokyonight.colors").setup()
       require("scrollbar").setup({

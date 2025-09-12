@@ -34,7 +34,7 @@ alias dcd='cd ~/dotfiles'
 ## `ls` → `ls -laG` abbreviation
 abbr -a -g ls ls -laG
 ## alias test
-abbr gop 'go fmt ./... && goimports -w . && gotestsum --format-hivis --format-hide-empty-pkg -- -p 1 ./...'
+abbr goc 'go fmt ./... && goimports -w . && SCOPE=local gotestsum --format-hivis --format-hide-empty-pkg -- -p 1 ./...'
 abbr got 'go fmt ./... && goimports -w . && gotestsum --format-hivis --format-hide-empty-pkg'
 
 # Pyenv setup

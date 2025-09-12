@@ -49,7 +49,7 @@ end, { desc = "Find Config File", noremap = true })
 set("n", "<leader><space>", function()
   Snacks.picker.smart({
     filter = { cwd = true },
-    focus = "list",
+    -- focus = "list",
   })
 end, { desc = "Find smart", silent = true, noremap = true })
 set("n", "<leader>f.", function()

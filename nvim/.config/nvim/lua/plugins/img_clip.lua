@@ -1,6 +1,8 @@
 return {
   "HakonHarnes/img-clip.nvim",
+  lazy = true,
   event = "VeryLazy",
+  ft = { "markdown" },
   opts = {
     default = {
       relative_to_current_file = true,

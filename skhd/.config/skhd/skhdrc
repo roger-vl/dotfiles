@@ -33,12 +33,12 @@ meh - i : yabai -m window --toggle float --grid 24:24:1:1:22:22
 meh - u : yabai -m window --toggle float --grid 24:24:2:2:20:20
 meh - m : yabai -m window --toggle zoom-fullscreen
 
-meh - o ; windows
-meh - p ; ress
+# meh - o ; windows
+# meh - p ; ress
 
 # change window focus within space
-windows < escape ; default
-ress < escape ; default
+# windows < escape ; default
+# ress < escape ; default
 # <M-C-S-L>
 
 # # resize windows

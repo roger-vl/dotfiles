@@ -12,6 +12,7 @@ return {
     "chrisgrieser/nvim-early-retirement",
     event = "VeryLazy",
     config = true,
+    ft = { "lua", "go", "markdown" },
     opts = {
       retirementAgeMins = 5,
       ignoredFiletypes = { "TelescopePrompt", "sagafinder", "CodeCompanion" },

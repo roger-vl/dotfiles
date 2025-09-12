@@ -46,8 +46,7 @@ local config = {
         hide_filename_extension = true,
         use_mode_colors = true,
         buffers_color = {
-          active = "lualine_buff_active", -- Color for active buffer.
-          -- inactive = "lualine_buff_inactive", -- Color for inactive buffer.
+          active = "lualine_buff_active",
         },
       },
     },
@@ -61,7 +60,13 @@ local config = {
         end,
         -- color = Snacks.utility.color 'Debug',
       },
-      { "tabs" },
+      {
+        "tabs",
+        use_mode_colors = true,
+        tabs_color = {
+          active = "lualine_buff_active",
+        },
+      },
       { "progress", color = { fg = colors.fg, gui = "bold" } },
       { "location" },
     },

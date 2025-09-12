@@ -108,7 +108,7 @@ return {
     "nvimdev/lspsaga.nvim",
     lazy = true,
     event = "LspAttach",
-    ft = { "cpp", "lua", "http", "go" },
+    ft = { "cpp", "lua", "http", "go", "markdown" },
     config = function()
       require("lspsaga").setup({
         lightbulb = {

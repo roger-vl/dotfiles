@@ -1,5 +1,7 @@
 return {
   "L3MON4D3/LuaSnip",
+  lazy = true,
+  ft = { "markdown", "go", "lua" },
   opts = function(_, opts)
     local ls = require("luasnip")
 

@@ -126,7 +126,7 @@ end
 return {
   {
     "sindrets/diffview.nvim",
-    ft = { "go", "java", "lua" },
+    ft = { "go", "lua" },
     lazy = true,
     config = function()
       local actions = require("diffview.actions")
@@ -208,9 +208,9 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     lazy = true,
-    ft = { "lua", "go", "cpp" },
+    ft = { "lua", "go", "cpp", "markdown" },
     opts = {
-      current_line_blame = false,
+      current_line_blame = true,
       current_line_blame_opts = {
         virt_text = true,
         virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
@@ -223,6 +223,8 @@ return {
 
   {
     "pwntester/octo.nvim",
+    lazy = true,
+    ft = { "go" },
     config = function()
       require("octo").setup({
         picker = "snacks",
