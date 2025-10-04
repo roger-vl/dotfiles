@@ -25,6 +25,10 @@ set("n", "<C-D-j>", "<cmd>resize +5<cr>", { desc = "Increase Window Height" })
 set("n", "<C-D-k>", "<cmd>resize -5<cr>", { desc = "Decrease Window Height" })
 set("n", "<C-D-h>", "<cmd>vertical resize -5<cr>", { desc = "Decrease Window Width" })
 set("n", "<C-D-l>", "<cmd>vertical resize +5<cr>", { desc = "Increase Window Width" })
+set("n", "<C-i>", cmd("WindowsMaximize"), { noremap = true, silent = true })
+set("n", "<C-D-i>", cmd("WindowsEqualize"), { noremap = true, silent = true })
+set("n", "<C-D-.>", cmd("WindowsMaximizeHorizontally"))
+set("n", "<C-D-,>", cmd("WindowsMaximizeVertically"), { noremap = true, silent = true })
 
 -- saga
 set("n", ",a", "<cmd>Lspsaga hover_doc<CR>", { noremap = true, silent = true })
@@ -78,7 +82,7 @@ set("n", "<leader>fM", function()
 end, { desc = "Find on knowlege", silent = true, noremap = true })
 
 -- diff view
-set("n", "<leader>gr", function()
+set("n", "<leader>gv", function()
   vim.cmd("DiffviewOpen origin/HEAD...HEAD --follow")
 end, { desc = "Diff view PR (origin/base)", remap = true, silent = true })
 

@@ -37,10 +37,10 @@ return {
       },
     },
     image = {
-      enabled = false,
+      enabled = true,
       force = true,
       doc = {
-        inline = false,
+        inline = true,
       },
     },
     zen = {

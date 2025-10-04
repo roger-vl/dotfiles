@@ -1,17 +1,23 @@
 return {
   "nvim-neotest/neotest",
   lazy = true,
+  ft = { "go" },
   dependencies = {
     "nvim-neotest/nvim-nio",
     "nvim-lua/plenary.nvim",
     "antoinemadec/FixCursorHold.nvim",
-    "nvim-treesitter/nvim-treesitter",
+    {
+      "nvim-treesitter/nvim-treesitter", -- Optional, but recommended
+      branch = "main", -- NOTE; not the master branch!
+      build = function()
+        vim.cmd([[:TSUpdate go]])
+      end,
+    },
     { "fredrikaverpil/neotest-golang", version = "*" }, -- Installation
   },
-  ft = { "go" },
   opts = {
     discovery = {
-      enabled = false,
+      enabled = true,
       -- Number of workers to parse files concurrently.
       -- A value of 0 automatically assigns number based on CPU.
       -- Set to 1 if experiencing lag.
@@ -28,6 +34,10 @@ return {
         dap_go_enabled = true,
         warn_test_name_dupes = false,
         testify_enabled = true,
+        runner = "gotestsum",
+        env = {
+          SCOPE = "local",
+        },
       },
     },
     consumers = {
@@ -44,6 +54,10 @@ return {
             if r.status == "passed" then
               passed = passed + 1
             end
+          end
+
+          if passed == 0 then
+            return
           end
 
           vim.notify(passed .. "/" .. total .. " tests passed.")

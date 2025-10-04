@@ -10,13 +10,14 @@ $python\
 $java\
 $c\
 $cmd_duration\
-$shell\
 $time\
 $username\
-$os\
 $line_break\
 $character\
 """
+
+# $os\
+# $shell\
 
 palette = 'dracula'
 add_newline = true
