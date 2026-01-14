@@ -1,0 +1,114 @@
+;; to get all the keys
+(defcfg
+  process-unmapped-keys yes
+)
+
+;; Only one defsrc is allowed.
+;;
+;; defsrc defines the keys that will be intercepted by kanata. The order of the
+;; keys matches with deflayer declarations and all deflayer declarations must
+;; have the same number of keys as defsrc. Any keys not listed in defsrc will
+;; be passed straight to the operating system.
+(defsrc
+  esc    f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv    1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab    q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps   a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft   z    x    c    v    b    n    m    ,    .    /    ▲   rsft
+  fn   lctl  lalt lmet          spc         rmet ralt ◀    ▼    ▶
+)
+
+(deflayer main
+  esc   🔅   🔆    ✗    ✗    ✗    ✗    ◀◀   ▶⏸   ▶▶   🔇   🔉   🔊
+  grv    1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab    q    @w    @ehype    @r    t    y    @u    i    @o    p    [    ]    \
+  esc   @a    @s-s-two    @d-num    @f-s-one    g    h    j    k    l    @;    '    ret
+  lsft   z    x    c    @v-misc    b    n    m    ,    .    /    ▲   rsft
+  fn   lctl  lmet bspc          spc         ret   ralt ◀    ▼    lrld
+)
+
+(deflayer symbolsone
+   _    _    _    _    _    _    _    _    _    _    _    _    _
+   _    _    _    _    _    _    _    _    _    _    _    _    _    _
+   _    _    _    _    _    _    @la  @sq   @dq     [   ]   _   _  _
+   _    _    _    _    _    _    @as    -    =    @lp   @rp    _    _
+   _    _    _    _    _    _    @am    @un    +    {    }    _   _
+   _    _    _    _        _         _   _   _    _    _
+)
+
+(deflayer symbolstwo
+   _    _    _    _    _    _    _    _    _    _    _    _    _
+   _    _    _    _    _    _    _    _    _    _    _    _    _    _
+   _    _    _    _    _    _    _    _    _   `    _    _    _   _
+   _    _    _    _    _    _    _    @ar    @pr    @ti    @pi    '    _
+   _    _    _    _    _    _    _    @ca    @do    @nu    _    _   _
+   _    _    _    _        _         _   _   _    _    _
+)
+
+(deflayer numbers
+   _    _    _    _    _    _    _    _    _    _    _    _    _
+   _    _    _    _    _    _    _    _    _    _    _    _    _    _
+   _    _    _    _    _    _    _    1    4    7   _    _    _   _
+   _    _    _    _    _    _    _    2    5    8    0    _    _
+   _    _    _    _    _    _    _    3    6    9    _    _   _
+   _    _    _    _        _         _   _   _    _    _
+)
+
+(deflayer misc
+   _    _    _    _    _    _    _    _    _    _    _    _    _
+   _    _    _    _    _    _    _    _    _    _    _    _    _    _
+   _    _    _    _    _    _    _    1    4    7   _    _    _   _
+   _    _    _    _    _    _    _    2    5    8    0    _    _
+   _    _    _    _    _    _    _    3    6    9    _    _   _
+   _    _    _    _        _         _   _   _    _    _
+)
+
+;; variables
+(defvar
+
+tap-time 200
+hold-time 200
+)
+
+;; Aliases are referred to by `@<alias_name>`.
+(defalias
+
+  a (tap-hold $tap-time $hold-time a lsft)
+  ; (tap-hold $tap-time $hold-time ; rsft)
+
+
+  r (tap-hold $tap-time $hold-time r lctl)
+  u (tap-hold $tap-time $hold-time u rctl)
+
+  w (tap-hold $tap-time $hold-time w lalt)
+  o (tap-hold $tap-time $hold-time o ralt)
+
+  ehype (tap-hold $tap-time $hold-time e (multi lsft lctl lalt lmet)) ;; E Hyper key
+  f-s-one (tap-hold $tap-time $hold-time f (layer-toggle symbolsone)) ;; layer symbos one
+  s-s-two (tap-hold $tap-time $hold-time s (layer-toggle symbolstwo)) ;; layer symbos two
+  d-num (tap-hold $tap-time $hold-time d (layer-toggle numbers)) ;; layer numbers
+  v-misc (tap-hold $tap-time $hold-time v (layer-toggle misc)) ;; layer misc
+
+  lp (unicode "(")
+  rp (unicode ")")
+  la (unicode "!")
+  sq (unicode "'")
+  as (unicode "*")
+  am (unicode "&")
+  un (unicode "_")
+  ar (unicode "@")
+  pr (unicode "%")
+  ti (unicode "~")
+  pi (unicode "|")
+  ca (unicode "^")
+  do (unicode "$")
+  nu (unicode "#")
+
+  dq (unicode r#"""#)
+
+  ;; layer-switch changes the base layer.
+;;  dvk (layer-switch dvorak)
+
+)
+
+

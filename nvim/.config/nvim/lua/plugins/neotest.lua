@@ -6,13 +6,13 @@ return {
     "nvim-neotest/nvim-nio",
     "nvim-lua/plenary.nvim",
     "antoinemadec/FixCursorHold.nvim",
-    {
-      "nvim-treesitter/nvim-treesitter", -- Optional, but recommended
-      branch = "main", -- NOTE; not the master branch!
-      build = function()
-        vim.cmd([[:TSUpdate go]])
-      end,
-    },
+    -- {
+    --   "nvim-treesitter/nvim-treesitter", -- Optional, but recommended
+    --   branch = "main", -- NOTE; not the master branch!
+    --   build = function()
+    --     vim.cmd([[:TSUpdate go]])
+    --   end,
+    -- },
     { "fredrikaverpil/neotest-golang", version = "*" }, -- Installation
   },
   opts = {

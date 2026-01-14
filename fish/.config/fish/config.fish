@@ -34,8 +34,8 @@ alias dcd='cd ~/dotfiles'
 ## `ls` → `ls -laG` abbreviation
 abbr -a -g ls ls -laG
 ## alias test
-abbr goc 'go fmt ./... && goimports -w . && SCOPE=local gotestsum --format-hivis --format-hide-empty-pkg -- -p 1 ./...'
-abbr got 'go fmt ./... && goimports -w . && gotestsum --format-hivis --format-hide-empty-pkg'
+abbr goc 'docker stop local-spanner && go fmt ./... && goimports -w . && SCOPE=local gotestsum --format-hivis --format-hide-empty-pkg -- -p=1 -count=1 ./...'
+abbr got 'go fmt ./... && goimports -w . && gotestsum --format-hivis --format-hide-empty-pkg -- -count=1 ./...'
 
 # Pyenv setup
 # Requires `brew install pyenv`
@@ -76,3 +76,20 @@ function prompt_newline --on-event fish_postexec
     echo
 end
 alias clear "command clear; commandline -f clear-screen"
+
+# Unset the default fish greeting text which messes up Zellij
+# set fish_greeting
+
+# Check if we're in an interactive shell
+# if status is-interactive
+#
+#     # At this point, specify the Zellij config dir, so we can launch it manually if we want to
+#     export ZELLIJ_CONFIG_DIR=$HOME/.config/zellij
+#     # Check if our Terminal emulator is Ghostty
+#     if [ "$TERM" = xterm-ghostty ]
+#         set ZELLIJ_AUTO_ATTACH true
+#         # Launch zellij
+#         # eval (zellij setup --generate-auto-start fish | string collect)
+#         zellij attach --create none
+#     end
+# end

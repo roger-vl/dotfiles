@@ -1,10 +1,11 @@
 return {
   {
     "zbirenbaum/copilot.lua",
-    dependencies = {
-      "copilotlsp-nvim/copilot-lsp",
-    },
-    opts = {},
+    config = function()
+      require("copilot").setup({
+        copilot_model = "claude-sonne-4.5",
+      })
+    end,
   },
   {
     "olimorris/codecompanion.nvim",
@@ -90,7 +91,7 @@ return {
         desc = "Sidekick Toggle CLI",
       },
       {
-        "<leader>ad",
+        "<leader>an",
         function()
           require("sidekick.nes").toggle()
         end,

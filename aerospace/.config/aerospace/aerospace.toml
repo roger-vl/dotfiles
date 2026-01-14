@@ -173,28 +173,50 @@ backspace = ['close-all-windows-but-current', 'mode main']
 # alt-shift-j = ['join-with down', 'mode main']
 # alt-shift-k = ['join-with up', 'mode main']
 # alt-shift-l = ['join-with right', 'mode main']
+# run = ['layout floating', 'move-node-to-workspace 3']
 
 down = 'volume down'
 up = 'volume up'
 shift-down = ['volume set 0', 'mode main']
 
 
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'Spotify'
+# run = ['layout floating', 'move-node-to-workspace 3']
+#
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'slack'
+# run = ['move-node-to-workspace 3']
+#
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'run'
+# run = ['move-node-to-workspace 3']
+#
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'music'
+# run = ['layout floating', 'move-node-to-workspace 3']
+#
+# [[on-window-detected]]
+# if.app-name-regex-substring = 'reminders'
+# run = ['move-node-to-workspace 3']
+
+
 [[on-window-detected]]
 if.app-name-regex-substring = 'Spotify'
-run = ['layout floating', 'move-node-to-workspace 3']
+run = ['layout floating']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'slack'
-run = ['move-node-to-workspace 3']
+run = ['layout floating']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'run'
-run = ['move-node-to-workspace 3']
+run = ['layout floating']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'music'
-run = ['layout floating', 'move-node-to-workspace 3']
+run = ['layout floating']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'reminders'
-run = ['move-node-to-workspace 3']
+run = ['layout floating']

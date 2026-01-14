@@ -11,3 +11,4 @@ vim.opt.spell = true
 vim.opt.spelloptions = "camel"
 -- vim.g.loaded_netrw = 0
 -- vim.g.loaded_netrwPlugin = 0
+vim.opt.swapfile = false

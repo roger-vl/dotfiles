@@ -42,12 +42,12 @@ set("n", "<leader>fc", function()
     cwd = "~/dotfiles",
     exclude = { "**/nvim-dev/*" },
     hidden = true,
-    sort_lastused = true,
-    sort = {
-      fields = {
-        "file",
-      },
-    },
+    -- sort_lastused = true,
+    -- sort = {
+    --   fields = {
+    --     "file",
+    --   },
+    -- },
   })
 end, { desc = "Find Config File", noremap = true })
 set("n", "<leader><space>", function()
