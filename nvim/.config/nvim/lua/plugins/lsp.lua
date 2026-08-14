@@ -7,6 +7,7 @@ return {
       },
       servers = {
         gopls = {
+          -- cmd = { vim.fn.expand("$HOME/.local/share/nvim/mason/bin/gopls"), "-remote=auto" },
           settings = {
             gopls = {
               codelenses = {
@@ -42,7 +43,7 @@ return {
         lua_ls = {
           single_file_support = true,
           settings = {
-            lua = {
+            Lua = {
               hint = {
                 enable = true,
               },
@@ -95,7 +96,6 @@ return {
         "hurl",
         "latex",
         "css",
-        "norg",
         "scss",
         "svelte",
         "typst",

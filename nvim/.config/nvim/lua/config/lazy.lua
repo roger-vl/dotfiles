@@ -12,9 +12,6 @@ end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 require("lazy").setup({
-  change_detection = {
-    notify = false,
-  },
   performance = {
     rtp = {
       disabled_plugins = {
@@ -39,7 +36,6 @@ require("lazy").setup({
       },
     },
     { import = "lazyvim.plugins.extras.lang.go" },
-    -- { import = "lazyvim.plugins.extras.lang.python" },
     { import = "lazyvim.plugins.extras.lang.markdown" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.lang.yaml" },

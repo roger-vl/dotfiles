@@ -1,0 +1,5 @@
+[metadata]
+name = "wts"
+
+[source]
+command = "wt switch"

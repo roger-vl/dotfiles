@@ -20,11 +20,11 @@
 
 (deflayer main
   esc   🔅   🔆    ✗    ✗    ✗    ✗    ◀◀   ▶⏸   ▶▶   🔇   🔉   🔊
-  grv    1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab    q    @w    @ehype    @r    t    y    @u    i    @o    p    [    ]    \
-  esc   @a    @s-s-two    @d-num    @f-s-one    g    h    j    k    l    @;    '    ret
-  lsft   z    x    c    @v-misc    b    n    m    ,    .    /    ▲   rsft
-  fn   lctl  lmet bspc          spc         ret   ralt ◀    ▼    lrld
+  grv    1    2    3    4    5    6    7    8    9    0    -    =    XX
+  tab    q    @w    @ehype    r    t    y    u    i    @o    p    [    ]    \
+  esc   @a    @s-s-two    @d-num    @f-s-one    @g-misc    h    j    k    l    @;    '    ret
+  XX   @z    x    @c    @v    b    @n    m    @,    @.    /    ▲   XX
+  fn   XX  XX bspc          spc         ret   XX ◀    ▼    lrld
 )
 
 (deflayer symbolsone
@@ -32,7 +32,7 @@
    _    _    _    _    _    _    _    _    _    _    _    _    _    _
    _    _    _    _    _    _    @la  @sq   @dq     [   ]   _   _  _
    _    _    _    _    _    _    @as    -    =    @lp   @rp    _    _
-   _    _    _    _    _    _    @am    @un    +    {    }    _   _
+   _    _    _    _    _    _    @am    @un    +  @lb   @rb    _   _
    _    _    _    _        _         _   _   _    _    _
 )
 
@@ -57,8 +57,8 @@
 (deflayer misc
    _    _    _    _    _    _    _    _    _    _    _    _    _
    _    _    _    _    _    _    _    _    _    _    _    _    _    _
-   _    _    _    _    _    _    _    1    4    7   _    _    _   _
-   _    _    _    _    _    _    _    2    5    8    0    _    _
+   _    _    _    _    _    _    mltp     mrtp     @mosdown  @mosup   _    _    _   _
+   _    _    _    _    _    _    @moleft  @modown  @moup @moright    0    _    _
    _    _    _    _    _    _    _    3    6    9    _    _   _
    _    _    _    _        _         _   _   _    _    _
 )
@@ -77,17 +77,33 @@ hold-time 200
   ; (tap-hold $tap-time $hold-time ; rsft)
 
 
-  r (tap-hold $tap-time $hold-time r lctl)
-  u (tap-hold $tap-time $hold-time u rctl)
+  c (tap-hold $tap-time $hold-time c lalt)
+  , (tap-hold $tap-time $hold-time , ralt)
 
-  w (tap-hold $tap-time $hold-time w lalt)
-  o (tap-hold $tap-time $hold-time o ralt)
+  z (tap-hold $tap-time $hold-time z lmet)
+  . (tap-hold $tap-time $hold-time . lmet)
+
+  v (tap-hold $tap-time $hold-time v lctl)
+  n (tap-hold $tap-time $hold-time n rctl)
+
+  w (tap-hold $tap-time $hold-time w (multi lsft lctl lalt ))
+  o (tap-hold $tap-time $hold-time o (multi lsft lctl lalt ))
+
+
+  ;; mouse things
+  moleft (movemouse-accel-left 1 2000 1 5)
+  moright (movemouse-accel-right 1 2000 1 5)
+  moup (movemouse-accel-up 1 2000 1 5)
+  modown (movemouse-accel-down 1 2000 1 5)
+  
+  mosup (mwheel-up 120 50)
+  mosdown (mwheel-down 120 50)
 
   ehype (tap-hold $tap-time $hold-time e (multi lsft lctl lalt lmet)) ;; E Hyper key
   f-s-one (tap-hold $tap-time $hold-time f (layer-toggle symbolsone)) ;; layer symbos one
   s-s-two (tap-hold $tap-time $hold-time s (layer-toggle symbolstwo)) ;; layer symbos two
   d-num (tap-hold $tap-time $hold-time d (layer-toggle numbers)) ;; layer numbers
-  v-misc (tap-hold $tap-time $hold-time v (layer-toggle misc)) ;; layer misc
+  g-misc (tap-hold $tap-time $hold-time g (layer-toggle misc)) ;; layer misc
 
   lp (unicode "(")
   rp (unicode ")")
@@ -103,6 +119,8 @@ hold-time 200
   ca (unicode "^")
   do (unicode "$")
   nu (unicode "#")
+  lb (unicode "{")
+  rb (unicode "}")
 
   dq (unicode r#"""#)
 

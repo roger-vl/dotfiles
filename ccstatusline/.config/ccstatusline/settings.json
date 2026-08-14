@@ -1,0 +1,97 @@
+{
+  "version": 3,
+  "lines": [
+    [
+      {
+        "id": "1",
+        "type": "model",
+        "color": "brightCyan"
+      },
+      {
+        "id": "6",
+        "type": "separator"
+      },
+      {
+        "id": "46358c48-8241-4f58-abb0-f4c5ae1a98cd",
+        "type": "vim-mode",
+        "color": "green"
+      },
+      {
+        "id": "4",
+        "type": "separator"
+      },
+      {
+        "id": "7",
+        "type": "git-changes",
+        "color": "blue"
+      }
+    ],
+    [
+      {
+        "id": "254e05b4-2c0f-4cab-b836-3bc5f43b588c",
+        "type": "session-name",
+        "color": "brightYellow"
+      },
+      {
+        "id": "79610306-204b-4f77-ae2c-6e237279a006",
+        "type": "separator"
+      },
+      {
+        "id": "fc0c5b2b-acb7-477c-8766-1b1eacca6580",
+        "type": "session-cost"
+      },
+      {
+        "id": "a4fe4911-aaba-49b6-849f-be02a713b6bd",
+        "type": "separator"
+      },
+      {
+        "id": "b5641568-0f22-4aa6-996a-014a8d429549",
+        "type": "total-speed"
+      }
+    ],
+    [
+      {
+        "id": "1d537960-1980-423c-94be-b5aa67cd95f7",
+        "type": "free-memory",
+        "color": "brightRed"
+      },
+      {
+        "id": "d91e6822-63eb-4c55-ba96-86fb1ff10cd5",
+        "type": "separator"
+      },
+      {
+        "id": "525409dd-ea8a-4644-b18c-356e65cdd7a2",
+        "type": "context-length",
+        "color": "brightBlue"
+      },
+      {
+        "id": "bcc0584f-9a10-4e81-9168-cf8b001f078d",
+        "type": "separator"
+      },
+      {
+        "id": "957ed9bd-0b9f-43eb-a51e-bf9b8e0000a7",
+        "type": "thinking-effort",
+        "color": "brightBlack"
+      }
+    ]
+  ],
+  "flexMode": "full-minus-40",
+  "compactThreshold": 60,
+  "colorLevel": 2,
+  "inheritSeparatorColors": false,
+  "globalBold": false,
+  "minimalistMode": false,
+  "powerline": {
+    "enabled": false,
+    "separators": [
+      ""
+    ],
+    "separatorInvertBackground": [
+      false
+    ],
+    "startCaps": [],
+    "endCaps": [],
+    "autoAlign": false,
+    "continueThemeAcrossLines": false
+  }
+}

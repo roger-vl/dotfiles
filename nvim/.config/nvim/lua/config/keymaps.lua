@@ -31,10 +31,10 @@ set("n", "<C-D-.>", cmd("WindowsMaximizeHorizontally"))
 set("n", "<C-D-,>", cmd("WindowsMaximizeVertically"), { noremap = true, silent = true })
 
 -- saga
-set("n", ",a", "<cmd>Lspsaga hover_doc<CR>", { noremap = true, silent = true })
-set("n", ",s", "<cmd>Lspsaga peek_definition<CR>", { noremap = true, silent = true })
-set("n", ",f", "<cmd>Lspsaga finder ++normal<CR>", { noremap = true, silent = true })
-set("n", ",d", "<cmd>Lspsaga outline<CR>", { noremap = true, silent = true })
+set("n", "<M-a>", "<cmd>Lspsaga hover_doc<CR>", { noremap = true, silent = true })
+set("n", "<M-s>", "<cmd>Lspsaga peek_definition<CR>", { noremap = true, silent = true })
+set("n", "<M-f>", "<cmd>Lspsaga finder ++normal<CR>", { noremap = true, silent = true })
+set("n", "<M-d>", "<cmd>Lspsaga outline<CR>", { noremap = true, silent = true })
 
 -- Pickers
 set("n", "<leader>fc", function()
@@ -80,6 +80,27 @@ set("n", "<leader>fM", function()
     },
   })
 end, { desc = "Find on knowlege", silent = true, noremap = true })
+set("n", "<leader>fd", function()
+  Snacks.picker.git_diff({
+    base = "origin",
+    focus = "list",
+    layout = {
+      preset = "ivy", -- or "vertical", "horizontal", "float", "vscode"
+      position = "bottom", -- options are "main", "top", "bottom", "left", "right"
+    },
+    formatters = {
+      file = {
+        filename_first = true,
+        git_status_hl = true,
+      },
+    },
+  })
+end, { desc = "Find git diff base branch", silent = true, noremap = true })
+
+-- diff git sings base
+set("n", "<leader>gd", function()
+  require("gitsigns").change_base("origin", true)
+end, { desc = "Gitsings global (origin/base)", remap = true, silent = true })
 
 -- diff view
 set("n", "<leader>gv", function()
@@ -87,13 +108,13 @@ set("n", "<leader>gv", function()
 end, { desc = "Diff view PR (origin/base)", remap = true, silent = true })
 
 -- AI
-set(
-  "n",
-  "<leader>ci",
-  cmd("CodeCompanionChat Toggle"),
-  { desc = "CodeCompanionChat Toggle", remap = true, silent = true }
-)
-set("v", "<leader>ci", ": CodeCompanionChat ", { desc = "CodeCompanionChat Selected", remap = true, silent = false })
+-- set(
+--   "n",
+--   "<leader>ci",
+--   cmd("CodeCompanionChat Toggle"),
+--   { desc = "CodeCompanionChat Toggle", remap = true, silent = true }
+-- )
+-- set("v", "<leader>ci", ": CodeCompanionChat ", { desc = "CodeCompanionChat Selected", remap = true, silent = false })
 
 -- lua execute
 set("n", "<leader>ax", "<cmd>source %<CR>", { desc = "Source current buffer", remap = true, silent = true })

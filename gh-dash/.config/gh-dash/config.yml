@@ -1,0 +1,150 @@
+# yaml-language-server: $schema=https://gh-dash.dev/schema.json
+prSections:
+  - title: My Pull Requests
+    filters: is:open author:@me
+  - title: Needs My Review
+    filters: is:open review-requested:@me
+  - title: Involved
+    filters: is:open involves:@me -author:@me
+issuesSections:
+  - title: My Issues
+    filters: is:open author:@me
+  - title: Assigned
+    filters: is:open assignee:@me
+  - title: Involved
+    filters: is:open involves:@me -author:@me
+notificationsSections:
+  - title: All
+    filters: ""
+  - title: Created
+    filters: reason:author
+  - title: Participating
+    filters: reason:participating
+  - title: Mentioned
+    filters: reason:mention
+  - title: Review Requested
+    filters: reason:review-requested
+  - title: Assigned
+    filters: reason:assign
+  - title: Subscribed
+    filters: reason:subscribed
+  - title: Team Mentioned
+    filters: reason:team-mention
+repo:
+  branchesRefetchIntervalSeconds: 30
+  prsRefetchIntervalSeconds: 60
+defaults:
+  preview:
+    open: true
+    width: 0.45
+    height: 0.6
+    position: auto
+  prsLimit: 20
+  prApproveComment: LGTM
+  issuesLimit: 20
+  notificationsLimit: 20
+  view: prs
+  layout:
+    prs:
+      updatedAt:
+        width: 5
+      createdAt:
+        width: 5
+      repo:
+        width: 20
+      author:
+        width: 15
+      authorIcon:
+        hidden: false
+      labels:
+        width: 22
+        hidden: true
+      assignees:
+        width: 20
+        hidden: true
+      base:
+        width: 15
+        hidden: true
+      lines:
+        width: 15
+    issues:
+      updatedAt:
+        width: 5
+      createdAt:
+        width: 5
+      repo:
+        width: 15
+      creator:
+        width: 10
+      creatorIcon:
+        hidden: false
+      assignees:
+        width: 20
+        hidden: true
+  refetchIntervalMinutes: 30
+keybindings:
+  universal:
+    # Move the built-in "refresh all sections" off R (its default key) onto
+    # ctrl+r, so R is free for the custom prs `tuicr` binding below. Without
+    # this remap, gh-dash's universal RefreshAll shadows the custom R command
+    # (this is why O worked but R did not: uppercase O has no built-in).
+    - key: ctrl+r
+      builtin: refreshAll
+    - key: g
+      name: lazygit
+      command: >
+        cd {{.RepoPath}}; lazygit
+  prs:
+    - key: O
+      name: code review
+      # O -> dedicated tmux SESSION per PR (named O-<branch>), wt creates the
+      # worktree, nvim opens with SIDEKICK_REV=1 (Claude review). switch-client
+      # jumps you into it; the dashboard session stays alive in the background.
+      # Bound to O (not C): C is gh-dash's built-in Checkout key.
+      # Session name = "O-" + the PR's head branch ({{.HeadRefName}}), which is
+      # far more descriptive than the PR number. `/` and `.` are sanitized to
+      # `-` because tmux forbids them in session names (e.g. feature/foo).
+      # IMPORTANT: gh-dash runs this via `$SHELL -c`, and $SHELL here is fish,
+      # which can't parse `VAR=...` or `${VAR##*/}` (it aborts at the first `=`,
+      # so nothing ran and switch-client got an empty -t). Wrapping the POSIX
+      # body in `sh -c '...'` fixes it: fish passes the single-quoted string to
+      # sh untouched, and sh runs the bash-style command.
+      # --no-hooks: gh-dash owns session creation here, so skip worktrunk's
+      # pre-start tmux hook (it would spawn a competing session + nested attach).
+      # TODO: future-proof the -x form before upgrading wt: `--execute` will
+      # take a program + args (not a shell command line). Switch to:
+      #   -x sh -- -c "SIDEKICK_REV=1 nvim"
+      command: >
+        sh -c 'S="O-$(echo "{{.HeadRefName}}" | tr "/." "--")";
+        tmux new-session -A -d -s "$S" -c "{{.RepoPath}}"
+        "wt switch pr:{{.PrNumber}} --no-hooks -y -x \"SIDEKICK_REV=1 nvim\"";
+        tmux switch-client -t "$S"'
+    - key: R
+      name: tuicr
+      # R -> same wt worktree flow as O (create-or-attach to the pr:<n>
+      # worktree), but launches `tuicr pr <n>` (code-review TUI) instead of
+      # nvim. The `pr <n>` subcommand is required: bare `tuicr` has no commit
+      # range/PR to review, so it exits immediately and the tmux session
+      # collapses back to the dash. Session name = "R-" + head branch
+      # ({{.HeadRefName}}, `/` and `.` sanitized to `-`) so it can coexist with
+      # O's review session while pointing at the same worktree directory. Same
+      # sh -c wrapping and --no-hooks rationale as O.
+      command: >
+        sh -c 'S="R-$(echo "{{.HeadRefName}}" | tr "/." "--")";
+        tmux new-session -A -d -s "$S" -c "{{.RepoPath}}"
+        "wt switch pr:{{.PrNumber}} --no-hooks -y -x \"sh ~/.config/gh-dash/tuicr-cr.sh {{.PrNumber}}\"";
+        tmux switch-client -t "$S"'
+repoPaths:
+  melisource/*: ~/Documents/repos/melisource/*
+theme:
+  ui:
+    sectionsShowCount: true
+    table:
+      showSeparator: true
+      compact: false
+pager:
+  diff: ""
+confirmQuit: false
+showAuthorIcons: true
+smartFilteringAtLaunch: true
+includeReadNotifications: true

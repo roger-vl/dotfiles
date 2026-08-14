@@ -6,7 +6,10 @@ end
 ## evals
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ## sources
-source ~/.config/local/paths.fish
+test -f ~/.config/local/paths.fish; and source ~/.config/local/paths.fish
+
+## Claude Code: force Opus 4.8 as default model (overrides org default Sonnet 4.6)
+set -gx ANTHROPIC_MODEL claude-opus-4-8
 
 ## paths
 set -gx PATH $PATH ~/.local/share/bob/nvim-bin
@@ -29,13 +32,16 @@ alias lg=lazygit
 alias f=fury
 alias ls='lsd -lah'
 alias dcd='cd ~/dotfiles'
+alias fas='fury ai assets'
 
 # Abbreviations
 ## `ls` → `ls -laG` abbreviation
 abbr -a -g ls ls -laG
 ## alias test
-abbr goc 'docker stop local-spanner && go fmt ./... && goimports -w . && SCOPE=local gotestsum --format-hivis --format-hide-empty-pkg -- -p=1 -count=1 ./...'
+abbr goc 'docker stop local-spanner && go fmt ./... && goimports -w . && SCOPE=local GO_ENVIRONMENT=development gotestsum --format-hivis --format-hide-empty-pkg -- -p=1 -count=1 ./...'
 abbr got 'go fmt ./... && goimports -w . && gotestsum --format-hivis --format-hide-empty-pkg -- -count=1 ./...'
+abbr gor 'gotestsum --format-hivis --format-hide-empty-pkg -- -count=1 ./...'
+abbr zd 'zellij delete-all-sessions && zellij kill-all-sessions && zellij delete-all-sessions'
 
 # Pyenv setup
 # Requires `brew install pyenv`
@@ -93,3 +99,50 @@ alias clear "command clear; commandline -f clear-screen"
 #         zellij attach --create none
 #     end
 # end
+
+# television
+tv init fish | source
+
+# >>> es-wrapper initialize >>>
+# Agregado automáticamente por el instalador de es-wrapper
+# Para desinstalar, ejecuta: ~/.es-wrapper/uninstall.sh
+set -gx PATH "$HOME/.es-wrapper/bin" $PATH
+
+functions --erase source 2>/dev/null
+function source --wraps source
+    builtin source $argv
+    set -l ret $status
+    if set -q VIRTUAL_ENV
+        set -gx PATH "$HOME/.es-wrapper/bin" $PATH
+    end
+    return $ret
+end
+
+# <<< es-wrapper initialize <<<
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

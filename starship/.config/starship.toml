@@ -1,3 +1,8 @@
+# ~/.config/starship.toml
+# Lending Product Lifecycle team default — starship prompt config.
+# To switch to an official preset instead, run:
+#   starship preset <name> -o ~/.config/starship.toml
+# See: https://starship.rs/presets/
 format = """
 [╭](fg:current_line)\
 $directory\
@@ -10,12 +15,12 @@ $python\
 $java\
 $c\
 $cmd_duration\
-$time\
 $username\
 $line_break\
 $character\
 """
 
+# $time\
 # $os\
 # $shell\
 
@@ -86,10 +91,10 @@ Unknown = ''
 Windows = ''
 
 [directory]
-format = '[─](fg:current_line)[](fg:box_back)[󰷏 ](fg:parametern bg:box_back)[](fg:base bg:box)[ $read_only$truncation_symbol$path](fg:foreground bg:box)[](fg:box)'
-home_symbol = " ~/"
-truncation_symbol = ' '
-truncation_length = 2
+format = '[─](fg:current_line)[](fg:box_back)[󰷏 ](fg:parametern bg:box_back)(fg:base bg:box)[ $read_only$truncation_symbol$path](fg:foreground bg:box)[](fg:box)'
+home_symbol = "~/"
+truncation_symbol = '../'
+truncation_length = 3
 read_only = '󱧵 '
 read_only_style = ''
 
@@ -139,7 +144,7 @@ disabled = false
 [time]
 format = '[─](fg:current_line)[](fg:purple)[󰦖 ](fg:primary bg:purple)[](fg:purple bg:box)[ $time](fg:foreground bg:box)[](fg:box)'
 time_format = '%H:%M'
-disabled = true
+disabled = false
 
 [username]
 format = '[─](fg:current_line)[](fg:yellow)[ ](fg:primary bg:yellow)[](fg:yellow bg:box)[ $user](fg:foreground bg:box)[](fg:box) '

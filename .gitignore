@@ -49,3 +49,11 @@ lazy-lock.json
 fish/.config/fish/conf.d
 fish/.config/fish/fish_variables
 fish/.config/fish/functions/fzf_key_bindings.fish
+
+# Editor/rotating backups (auto-generated, machine-local)
+*.bak
+*.bak.*
+*~
+*.orig
+*.old
+*.swp

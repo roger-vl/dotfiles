@@ -1,5 +1,6 @@
 return {
   "HakonHarnes/img-clip.nvim",
+  enabled = false,
   lazy = true,
   event = "VeryLazy",
   ft = { "markdown" },

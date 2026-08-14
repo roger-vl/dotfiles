@@ -1,0 +1,37 @@
+# ~/.config/worktrunk/config.toml
+worktree-path = "{{ repo_path }}/../{{ branch | sanitize }}"
+
+[commit.generation]
+command = "MAX_THINKING_TOKENS=0 claude -p --no-session-persistence --model=haiku --tools='' --safe-mode --setting-sources='user' --system-prompt=''"
+
+# Set upstream tracking to origin/<branch> for worktrees whose branch already
+# exists on the remote (fixes `git pull` not resolving the remote in worktrees).
+# [[pre-start]]
+# set-upstream = "branch=$(git rev-parse --abbrev-ref HEAD); git fetch origin --quiet \"$branch\" && git branch --set-upstream-to=origin/$branch $branch || true"
+
+[aliases]
+svi = "wt switch {{args}} --execute 'nvim'"
+
+[pre-start]
+tmux = """
+S={{ branch | sanitize }}
+W={{ worktree_path }}
+tmux new-session -d -s "$S" -c "$W" -n dev
+tmux attach -t $S
+
+# Create 4-pane layout: shell | backend / claude | frontend
+# tmux split-window -h -t "$S:dev" -c "$W"
+# tmux split-window -v -t "$S:dev.0" -c "$W"
+# tmux split-window -v -t "$S:dev.2" -c "$W"
+
+# Start services in each pane
+# tmux send-keys -t "$S:dev.1" 'npm run backend' Enter
+# tmux send-keys -t "$S:dev.2" 'claude' Enter
+# tmux send-keys -t "$S:dev.3" 'npm run frontend' Enter
+
+# tmux select-pane -t "$S:dev.0"
+echo "✓ Session '$S' — attach with: tmux attach -t $S"
+"""
+
+[pre-remove]
+tmux = "tmux kill-session -t {{ branch | sanitize }} 2>/dev/null || true"

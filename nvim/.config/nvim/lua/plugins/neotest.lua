@@ -37,6 +37,7 @@ return {
         runner = "gotestsum",
         env = {
           SCOPE = "local",
+          GO_ENVIRONMENT = "develop",
         },
       },
     },

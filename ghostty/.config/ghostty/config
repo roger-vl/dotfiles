@@ -1,10 +1,10 @@
-font-family = "MesloLG Nerd Font Mono"
-font-size = 16
+font-size = 14
 theme = elemental
 # gruvbox-material
-shell-integration = fish
-background-opacity = 0.98
-background-blur = 2
+command = /opt/homebrew/bin/fish
+shell-integration = none
+background-opacity = 0.94
+background-blur = 3
 macos-titlebar-style = hidden
 macos-option-as-alt = true
 macos-window-shadow = true
@@ -22,3 +22,7 @@ keybind = cmd+t=unbind
 keybind = cmd+w=unbind
 keybind = cmd+opt+left=unbind
 keybind = cmd+opt+right=unbind
+
+font-family = "MesloLGS Nerd Font"
+
+quit-after-last-window-closed = true

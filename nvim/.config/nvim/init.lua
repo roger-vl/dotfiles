@@ -26,3 +26,24 @@ setHl(0, "Diffremoved", {
 
 setHl(0, "WinSeparator", { fg = oc.overrides.base })
 setHl(0, "lualine_buff_active", { fg = oc.overrides.overlay1 })
+
+vim.api.nvim_create_autocmd("VimLeavePre", {
+  callback = function()
+    for _, client in ipairs(vim.lsp.get_clients()) do
+      client:stop()
+    end
+  end,
+})
+
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   group = vim.api.nvim_create_augroup("GitsignsValidatedBase", { clear = true }),
+--   pattern = "*",
+--   callback = function()
+--     local status_ok, gitsigns = pcall(require, "gitsigns")
+--     if not status_ok then
+--       return
+--     end
+--     -- Update gitsigns with the fallback-validated revision
+--     gitsigns.change_base("origin", true)
+--   end,
+-- })

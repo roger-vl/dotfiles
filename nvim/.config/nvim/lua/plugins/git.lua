@@ -210,6 +210,7 @@ return {
     lazy = true,
     ft = { "lua", "go", "cpp", "markdown" },
     opts = {
+      signs_staged_enable = true,
       current_line_blame = true,
       current_line_blame_opts = {
         virt_text = true,
@@ -221,18 +222,18 @@ return {
     },
   },
 
-  {
-    "pwntester/octo.nvim",
-    lazy = true,
-    ft = { "go" },
-    config = function()
-      require("octo").setup({
-        picker = "snacks",
-        ssh_aliases = {
-          ["roger.github.com"] = "github.com",
-          ["github.com-emu"] = "github.com",
-        },
-      })
-    end,
-  },
+  -- {
+  --   "pwntester/octo.nvim",
+  --   lazy = true,
+  --   ft = { "go" },
+  --   config = function()
+  --     require("octo").setup({
+  --       picker = "snacks",
+  --       ssh_aliases = {
+  --         ["roger.github.com"] = "github.com",
+  --         ["github.com-emu"] = "github.com",
+  --       },
+  --     })
+  --   end,
+  -- },
 }

@@ -1,7 +1,24 @@
 return {
   "snacks.nvim",
   opts = {
+    statuscolumn = { enabled = true },
+    scroll = { enabled = true },
+    lazygit = { enabled = true },
+    scratch = { enabled = true },
+    indent = { enabled = true },
+    gh = { enabled = true },
+    animate = { enabled = true },
     picker = {
+      sources = {
+        explorer = {
+          name = "Explorer",
+          cmd = "SnacksExplorer",
+        },
+        files = {
+          hidden = true,
+          ignored = true,
+        },
+      },
       win = {
         input = {
           keys = {
@@ -24,12 +41,10 @@ return {
         sort = { fields = { "score:asc", "idx" } },
       },
     },
-    scroll = { enabled = true },
     -- bigfile = {},
     explorer = {
       replace_netrw = true,
     },
-    statuscolumn = { enabled = true },
     styles = {
       snacks_image = {
         relative = "editor",
@@ -37,7 +52,7 @@ return {
       },
     },
     image = {
-      enabled = true,
+      enabled = false,
       force = false,
       doc = {
         inline = true,
